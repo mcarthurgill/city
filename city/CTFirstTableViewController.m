@@ -27,9 +27,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    BTSession *thisSession = [BTSession thisSession]; 
-    NSLog(@"loggedInUser: %@", [thisSession loggedInUser]);
-    self.tabBarController.navigationItem.title = [[thisSession loggedInUser] currentCity];
+    [self changeNavBarTitle];
+    
+    CGRect frame = self.tableView.frame;
+    frame.size.height = 355;
+    self.tableView.frame = frame;
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(startChat:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Start Chat" forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor blueColor]];
+    button.frame = CGRectMake(0, 365, 280, 40);
+    self.tableView.tableFooterView = button;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +61,20 @@
 {
     // Return the number of rows in the section.
     return 0;
+}
+
+#pragma mark - Misc
+
+- (void)changeNavBarTitle {
+    BTSession *thisSession = [BTSession thisSession];
+    self.tabBarController.navigationItem.title = [[thisSession loggedInUser] currentCity];
+}
+
+#pragma mark - Chat
+
+-(void)startChat:(id)sender{
+    NSLog(@"button pressed");
+    
 }
 
 
