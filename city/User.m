@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "CTAppDelegate.h"
 
 
 @implementation User
@@ -18,6 +19,20 @@
 
 -(NSString *)currentCity{
     return [[self city] cityName];
+}
+
+-(NSMutableArray *)friendsInCurrentCity
+{
+    NSMutableArray *array = [[[self.city users] allObjects] mutableCopy];
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+
+    for (User *user in array) {
+        if (user.name != nil) {
+            [returnArray addObject:user];
+        }
+    }
+
+    return returnArray;
 }
 
 @end

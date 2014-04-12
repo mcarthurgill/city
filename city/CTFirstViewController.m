@@ -15,6 +15,9 @@
 
 @implementation CTFirstViewController
 
+@synthesize friendsToChat;
+@synthesize friendsInCity;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,13 +31,17 @@
 {
     [super viewDidLoad];
     [self changeNavBarTitle];
-    UIView *navBar = [self.view viewWithTag:1];
-    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, navBar.frame.size.height + statusBarHeight, self.view.frame.size.width, self.view.frame.size.height-navBar.frame.size.height - self.tabBarController.tabBar.frame.size.height - statusBarHeight) style:UITableViewStylePlain];
-    table.dataSource = self;
-    table.delegate = self;
-    [self.view addSubview:table];
+    BTSession *thisSession = [BTSession thisSession];
+    friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
+
+    UITableView *table = [self createTable];
+    [self addTableToView:table];
+    
+    UIButton *startChatButton = [self createChatButton];
+    [self.view addSubview:startChatButton];
+    
+    friendsToChat = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,43 +61,106 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
+    return [friendsInCity count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"cell";
+    static NSString *cellIdentifier = @"cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    [cell setTag:[indexPath row]*-1];
-    
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellWithSwitch"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-    [[cell textLabel] setText:@"mcarthur"];
+    
+    [cell.textLabel setText:[[friendsInCity objectAtIndex:indexPath.row] name]];
+
+    if ([friendsToChat containsObject:[friendsInCity objectAtIndex:indexPath.row]]) {
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone; 
+    }
+
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    User *friend = [friendsInCity objectAtIndex:indexPath.row];
+    if ([friendsToChat containsObject:friend]) {
+        [friendsToChat removeObject:friend];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+    }else {
+        [friendsToChat addObject:friend]; 
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
 }
 
-#pragma mark - Misc
+#pragma mark - Setup
 
 - (void)changeNavBarTitle {
     BTSession *thisSession = [BTSession thisSession];
     self.tabBarController.navigationItem.title = [[thisSession loggedInUser] currentCity];
 }
 
-#pragma mark - Chat
-
--(void)startChat:(id)sender{
-    NSLog(@"button pressed: %@", sender);
+- (UITableView *)createTable {
+    CGFloat navBarHeight = [self getNavBarHeight];
+    CGFloat statusBarHeight = [self getStatusBarHeight];
+    CGFloat buttonAndMargin = [self getButtonHeightAndMargin];
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, navBarHeight + statusBarHeight, self.view.frame.size.width, self.view.frame.size.height-navBarHeight - self.tabBarController.tabBar.frame.size.height - statusBarHeight - buttonAndMargin) style:UITableViewStylePlain];
+    table.dataSource = self;
+    table.delegate = self;
+    [table setTag:3];
     
+    return table;
+}
+
+-(CGFloat)getNavBarHeight {
+    UIView *navBar = [self.view viewWithTag:1];
+    return navBar.frame.size.height;
+}
+
+-(CGFloat)getStatusBarHeight {
+    return [UIApplication sharedApplication].statusBarFrame.size.height;
+}
+
+-(CGFloat)getButtonHeightAndMargin {
+    return 60;
+}
+
+-(void)addTableToView:(UITableView *)table {
+    [self.view addSubview:table];
+}
+
+-(CGFloat)getTableHeight {
+    UIView *view = [self.view viewWithTag:3];
+    return view.frame.size.height;
+}
+
+-(UIButton *)createChatButton {
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(5, [self getStatusBarHeight] + [self getNavBarHeight] + [self getTableHeight] + 10, self.view.frame.size.width - 10, 55)];
+    
+    [button addTarget:self
+                        action:@selector(startChat:)
+              forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Start Chat" forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor blueColor]];
+    return button;
 }
 
 
+
+#pragma mark - Chat
+
+-(void)startChat:(id)sender{
+    NSLog(@"friendsToChat : %@", friendsToChat);
+    
+}
 
 @end

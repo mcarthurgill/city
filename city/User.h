@@ -20,4 +20,6 @@
 
 -(NSString *)currentCity;
 
+-(NSMutableArray *)friendsInCurrentCity;
+
 @end

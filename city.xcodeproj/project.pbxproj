@@ -24,6 +24,7 @@
 		764808A118B7B4F5009208F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764808A018B7B4F5009208F0 /* CoreData.framework */; };
 		764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 764808A218B7B562009208F0 /* city.xcdatamodeld */; };
 		76640C2B18F8640A00666F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76640C2A18F8640A00666F55 /* Main.storyboard */; };
+		76640C2E18F874E200666F55 /* SCContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76640C2D18F874E200666F55 /* SCContactsTableViewController.m */; };
 		768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */; };
 		76AC893518F8489C00AA562F /* CTFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AC893418F8489C00AA562F /* CTFirstViewController.m */; };
 		76BFEC1118ABE337000CFC86 /* BTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BFEC1018ABE337000CFC86 /* BTSession.m */; };
@@ -71,6 +72,8 @@
 		764808A018B7B4F5009208F0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		764808A318B7B562009208F0 /* city.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = city.xcdatamodel; sourceTree = "<group>"; };
 		76640C2A18F8640A00666F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		76640C2C18F874E200666F55 /* SCContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCContactsTableViewController.h; sourceTree = "<group>"; };
+		76640C2D18F874E200666F55 /* SCContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCContactsTableViewController.m; sourceTree = "<group>"; };
 		768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTContactHolderViewController.h; sourceTree = "<group>"; };
 		768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTContactHolderViewController.m; sourceTree = "<group>"; };
 		76AC893318F8489C00AA562F /* CTFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFirstViewController.h; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 			children = (
 				768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */,
 				768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */,
+				76640C2C18F874E200666F55 /* SCContactsTableViewController.h */,
+				76640C2D18F874E200666F55 /* SCContactsTableViewController.m */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				76EAA12D18F35174009CE526 /* CTLoginNavigationController.m in Sources */,
 				764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */,
 				76CA4A8418F4538E00BCBA93 /* User.m in Sources */,
+				76640C2E18F874E200666F55 /* SCContactsTableViewController.m in Sources */,
 				7614072C18AAE6F3009C8E3B /* CTAppDelegate.m in Sources */,
 				76BFEC1818ABE3C2000CFC86 /* NSString+SHAEncryption.m in Sources */,
 				76BFEC2218ABF5F8000CFC86 /* CTTabBarViewController.m in Sources */,

@@ -18,8 +18,8 @@
 @dynamic cityName;
 @dynamic users;
 
-+ (NSMutableArray *)allUsers {
-    
++ (NSMutableArray *)allCities
+{
     CTAppDelegate *appDelegate = (CTAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSError *error;

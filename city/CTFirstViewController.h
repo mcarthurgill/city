@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "City.h"
+#import "User.h"
 
 @interface CTFirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *friendsToChat;
+@property (strong, nonatomic) NSMutableArray *friendsInCity;
 
 @end

@@ -25,6 +25,6 @@
 - (void)removeUsersObject:(User *)value;
 - (void)addUsers:(NSSet *)values;
 - (void)removeUsers:(NSSet *)values;
-+ (NSMutableArray *)allUsers;
++ (NSMutableArray *)allCities;
 
 @end
