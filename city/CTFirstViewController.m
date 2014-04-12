@@ -80,7 +80,6 @@
     [cell.textLabel setText:[[friendsInCity objectAtIndex:indexPath.row] name]];
 
     if ([friendsToChat containsObject:[friendsInCity objectAtIndex:indexPath.row]]) {
-        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone; 
@@ -93,11 +92,9 @@
     User *friend = [friendsInCity objectAtIndex:indexPath.row];
     if ([friendsToChat containsObject:friend]) {
         [friendsToChat removeObject:friend];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
     }else {
         [friendsToChat addObject:friend]; 
-        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
     }
 }
