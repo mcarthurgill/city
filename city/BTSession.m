@@ -74,60 +74,77 @@ static BTSession* thisSession = nil;
     NSError *err;
     NSUInteger count = [context countForFetchRequest:request error:&err];
     if(count == 0) {
-        
+        NSLog(@"no users");
         User *user = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user setValue:@"McArthur Gill" forKey:@"name"];
         [user setValue:@"mickgill2008@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user.name);
         
         User *user1 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
-        [user setValue:@"Suzie Hotcakes" forKey:@"name"];
-        [user setValue:@"suzie@gmail.com" forKey:@"email"];
+        [user1 setValue:@"Suzie Hotcakes" forKey:@"name"];
+        [user1 setValue:@"suzie@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user1.name);
+
         
         User *user2 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user2 setValue:@"Will Schreiber" forKey:@"name"];
         [user2 setValue:@"will@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user2.name);
+
         
         User *user3 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user3 setValue:@"Reed Whitcraft" forKey:@"name"];
         [user3 setValue:@"reed@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user3.name);
+
         
         User *user4 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user4 setValue:@"Sarah Betack" forKey:@"name"];
         [user4 setValue:@"sarah@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user4.name);
+
         
         User *user5 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user5 setValue:@"Sam Gray" forKey:@"name"];
         [user5 setValue:@"buttmunch@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user5.name);
+
         
         User *user6 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user6 setValue:@"Andrew Kuykendall" forKey:@"name"];
         [user6 setValue:@"andrew@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user6.name);
+
         
         User *user7 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user7 setValue:@"George Harwood" forKey:@"name"];
         [user7 setValue:@"ghar@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user7.name);
+
         
         User *user8 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user8 setValue:@"Pierce Cobb" forKey:@"name"];
         [user8 setValue:@"pierce@gmail.com" forKey:@"email"];
+        NSLog(@"created %@", user8.name);
+
         
         //nashville
         City *nash = [NSEntityDescription
@@ -138,6 +155,8 @@ static BTSession* thisSession = nil;
         [nash setValue:longitude forKey:@"longitude"];
         [nash setValue:latitude forKey:@"latitude"];
         [nash setValue:@"Nashville" forKeyPath:@"cityName"];
+        NSLog(@"created %@", nash.cityName);
+
         
         //montgomery
         City *gump = [NSEntityDescription
@@ -148,6 +167,8 @@ static BTSession* thisSession = nil;
         [gump setValue:gumplong forKey:@"longitude"];
         [gump setValue:gumplat forKey:@"latitude"];
         [gump setValue:@"Montgomery" forKeyPath:@"cityName"];
+        NSLog(@"created %@", gump.cityName);
+
         
         //Cinci
         City *cinci = [NSEntityDescription
@@ -158,23 +179,24 @@ static BTSession* thisSession = nil;
         [cinci setValue:sflong forKey:@"longitude"];
         [cinci setValue:sflat forKey:@"latitude"];
         [cinci setValue:@"Cincinnati" forKeyPath:@"cityName"];
+        NSLog(@"created %@", cinci.cityName);
+
+        [nash addUsersObject:user];
+        [nash addUsersObject:user2];
+        [nash addUsersObject:user4];
+        [nash addUsersObject:user5];
+        [nash addUsersObject:user6];
         
-        [user setValue:nash forKeyPath:@"city"];
-        [user1 setValue:nash forKeyPath:@"city"];
-        [user2 setValue:nash forKeyPath:@"city"];
-        [user4 setValue:nash forKeyPath:@"city"];
-        [user5 setValue:nash forKeyPath:@"city"];
-        [user6 setValue:nash forKeyPath:@"city"];
+        [gump addUsersObject:user3];
+        [gump addUsersObject:user7];
+        [gump addUsersObject:user8];
         
-        [user3 setValue:gump forKeyPath:@"city"];
-        [user7 setValue:gump forKeyPath:@"city"];
-        [user8 setValue:gump forKeyPath:@"city"];
+        [cinci addUsersObject:user1];
         
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-        
     }
     
     NSError *error;
@@ -183,20 +205,15 @@ static BTSession* thisSession = nil;
                                    entityForName:@"User" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *person in fetchedObjects) {
-        NSLog(@"Name: %@", [person valueForKey:@"name"]);
-        NSLog(@"Email: %@", [person valueForKey:@"email"]);
-        NSLog(@"user => city: %@", [[person valueForKey:@"city"] valueForKey:@"cityName"]);
+    for (User *person in fetchedObjects) {
+        if ([person.name isEqualToString:@"McArthur Gill"]) {
+            [self loginUser:person];
+        }
+        NSLog(@"Name: %@", person.name);
+        NSLog(@"Email: %@", person.email);
+        NSLog(@"user => city: %@", [person.city cityName]);
     }
-    
-    [self loginUser:[fetchedObjects objectAtIndex:0]];
-    
-    NSArray *cities = [[City allCities] copy];
-    NSLog(@"cities count: %lu", (unsigned long)[cities count]);
-    for (City *city in cities) {
-        NSLog(@"%@", [city cityName]);
-    }
-   
+    NSLog(@"loggedInUser : %@", [[self loggedInUser] name]);
 }
 
 - (NSDictionary*) countryCallingCodes

@@ -17,6 +17,9 @@
 
 @synthesize friendsToChat;
 @synthesize friendsInCity;
+@synthesize table;
+@synthesize popover;
+@synthesize thisSession;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,13 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self changeNavBarTitle];
+    [self editNavBar];
     
-    BTSession *thisSession = [BTSession thisSession];
+    thisSession = [BTSession thisSession];
     friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
 
-    UITableView *table = [self createTable];
-    [self addTableToView:table];
+    [self createTable];
+    [self addTableToView];
     
     UIButton *startChatButton = [self createChatButton];
     [self.view addSubview:startChatButton];
@@ -101,21 +104,57 @@
 
 #pragma mark - Setup
 
-- (void)changeNavBarTitle {
-    BTSession *thisSession = [BTSession thisSession];
+- (void)editNavBar {
     self.tabBarController.navigationItem.title = [[thisSession loggedInUser] currentCity];
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(chooseCityButtonTapped:)];
+    self.tabBarController.navigationItem.rightBarButtonItem = item;
 }
 
-- (UITableView *)createTable {
+- (void)chooseCityButtonTapped:(id)sender {
+    NSLog(@"chooseCity tapped");
+    CTPopoverTableViewController *controller = [[CTPopoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    controller.delegate = self;
+    
+    popover = [[FPPopoverController alloc] initWithViewController:controller];
+    
+    UIBarButtonItem *buttonItem = sender;
+    UIView* btnView = [buttonItem valueForKey:@"view"];
+    //On these cases is better to specify the arrow direction
+    [popover setArrowDirection:FPPopoverArrowDirectionUp];
+    [popover presentPopoverFromView:btnView];
+}
+
+#pragma mark - CityPicker delegate method
+-(void)chooseSelectedCity:(City *)city
+{
+    NSLog(@"selectedCity!");
+    [self changeUserCurrentCity:city];
+    
+    //Dismiss the popover if it's showing.
+    if (popover) {
+        [popover dismissPopoverAnimated:YES];
+        popover = nil;
+    }
+    
+    [table reloadData];
+}
+
+-(void)changeUserCurrentCity:(City *)city {
+    self.tabBarController.navigationItem.title = [city cityName];
+    [[thisSession loggedInUser] setCity:city];
+    friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
+    [friendsToChat removeAllObjects];
+}
+
+
+- (void)createTable {
     CGFloat navBarHeight = [self getNavBarHeight];
     CGFloat statusBarHeight = [self getStatusBarHeight];
     CGFloat buttonAndMargin = [self getButtonHeightAndMargin];
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, navBarHeight + statusBarHeight, self.view.frame.size.width, self.view.frame.size.height-navBarHeight - self.tabBarController.tabBar.frame.size.height - statusBarHeight - buttonAndMargin) style:UITableViewStylePlain];
+    table = [[UITableView alloc] initWithFrame:CGRectMake(0, navBarHeight + statusBarHeight, self.view.frame.size.width, self.view.frame.size.height-navBarHeight - self.tabBarController.tabBar.frame.size.height - statusBarHeight - buttonAndMargin) style:UITableViewStylePlain];
     table.dataSource = self;
     table.delegate = self;
     [table setTag:3];
-    
-    return table;
 }
 
 -(CGFloat)getNavBarHeight {
@@ -131,7 +170,7 @@
     return 60;
 }
 
--(void)addTableToView:(UITableView *)table {
+-(void)addTableToView {
     [self.view addSubview:table];
 }
 

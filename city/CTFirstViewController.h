@@ -9,10 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "City.h"
 #import "User.h"
+#import "FPPopoverController.h"
+#import "ARCMacros.h"
+#import "CTPopoverTableViewController.h"
+#import "BTSession.h"
 
-@interface CTFirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CTFirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FPPopoverControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *friendsToChat;
 @property (strong, nonatomic) NSMutableArray *friendsInCity;
+@property (strong, nonatomic) UITableView *table;
+@property (strong, nonatomic) FPPopoverController *popover;
+@property (strong, nonatomic) BTSession *thisSession;
+
+-(IBAction)chooseCityButtonTapped:(id)sender;
+-(void)chooseSelectedCity:(City *)city;
 
 @end

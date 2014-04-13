@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7610E3CE18F9CB4F0091F489 /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7610E3CD18F9CB4F0091F489 /* settings_icon.png */; };
+		7610E3DA18F9D5190091F489 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7610E3D518F9D5190091F489 /* FPPopoverController.m */; };
+		7610E3DB18F9D5190091F489 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7610E3D718F9D5190091F489 /* FPPopoverView.m */; };
+		7610E3DC18F9D5190091F489 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7610E3D918F9D5190091F489 /* FPTouchView.m */; };
 		7614071C18AAE6F3009C8E3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7614071B18AAE6F3009C8E3B /* Foundation.framework */; };
 		7614071E18AAE6F3009C8E3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7614071D18AAE6F3009C8E3B /* CoreGraphics.framework */; };
 		7614072018AAE6F3009C8E3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7614071F18AAE6F3009C8E3B /* UIKit.framework */; };
@@ -25,6 +29,7 @@
 		764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 764808A218B7B562009208F0 /* city.xcdatamodeld */; };
 		76640C2B18F8640A00666F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76640C2A18F8640A00666F55 /* Main.storyboard */; };
 		76640C2E18F874E200666F55 /* SCContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76640C2D18F874E200666F55 /* SCContactsTableViewController.m */; };
+		767DAFB018FB2C2E00565814 /* CTPopoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */; };
 		768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */; };
 		76AC893518F8489C00AA562F /* CTFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AC893418F8489C00AA562F /* CTFirstViewController.m */; };
 		76BFEC1118ABE337000CFC86 /* BTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BFEC1018ABE337000CFC86 /* BTSession.m */; };
@@ -49,6 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7610E3CD18F9CB4F0091F489 /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon.png; path = ../settings_icon.png; sourceTree = "<group>"; };
+		7610E3D318F9D5190091F489 /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		7610E3D418F9D5190091F489 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		7610E3D518F9D5190091F489 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		7610E3D618F9D5190091F489 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		7610E3D718F9D5190091F489 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		7610E3D818F9D5190091F489 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		7610E3D918F9D5190091F489 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		7614071818AAE6F3009C8E3B /* city.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = city.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7614071B18AAE6F3009C8E3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7614071D18AAE6F3009C8E3B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,6 +87,8 @@
 		76640C2A18F8640A00666F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		76640C2C18F874E200666F55 /* SCContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCContactsTableViewController.h; sourceTree = "<group>"; };
 		76640C2D18F874E200666F55 /* SCContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCContactsTableViewController.m; sourceTree = "<group>"; };
+		767DAFAE18FB2C2E00565814 /* CTPopoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopoverTableViewController.h; sourceTree = "<group>"; };
+		767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopoverTableViewController.m; sourceTree = "<group>"; };
 		768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTContactHolderViewController.h; sourceTree = "<group>"; };
 		768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTContactHolderViewController.m; sourceTree = "<group>"; };
 		76AC893318F8489C00AA562F /* CTFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFirstViewController.h; sourceTree = "<group>"; };
@@ -121,6 +136,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7610E3D218F9D4D80091F489 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				7610E3D318F9D5190091F489 /* ARCMacros.h */,
+				7610E3D418F9D5190091F489 /* FPPopoverController.h */,
+				7610E3D518F9D5190091F489 /* FPPopoverController.m */,
+				7610E3D618F9D5190091F489 /* FPPopoverView.h */,
+				7610E3D718F9D5190091F489 /* FPPopoverView.m */,
+				7610E3D818F9D5190091F489 /* FPTouchView.h */,
+				7610E3D918F9D5190091F489 /* FPTouchView.m */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
 		7614070F18AAE6F3009C8E3B = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +184,7 @@
 		7614072118AAE6F3009C8E3B /* city */ = {
 			isa = PBXGroup;
 			children = (
+				7610E3D218F9D4D80091F489 /* Popover */,
 				76CA4A7E18F44A2800BCBA93 /* Models */,
 				76BFEC1918ABE52F000CFC86 /* Add-ons */,
 				76BFEC1218ABE37A000CFC86 /* LoadJson */,
@@ -240,6 +270,8 @@
 				76BFEC2118ABF5F8000CFC86 /* CTTabBarViewController.m */,
 				76AC893318F8489C00AA562F /* CTFirstViewController.h */,
 				76AC893418F8489C00AA562F /* CTFirstViewController.m */,
+				767DAFAE18FB2C2E00565814 /* CTPopoverTableViewController.h */,
+				767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */,
 				7614073318AAE6F3009C8E3B /* CTSecondViewController.h */,
 				7614073418AAE6F3009C8E3B /* CTSecondViewController.m */,
 			);
@@ -278,6 +310,7 @@
 		76D6AA0218AEA5DB00E8F52F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				7610E3CD18F9CB4F0091F489 /* settings_icon.png */,
 				76D6AA0718AEA84200E8F52F /* unchecked.png */,
 				76D6AA0818AEA84200E8F52F /* checked.png */,
 			);
@@ -362,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D6AA0A18AEA84200E8F52F /* checked.png in Resources */,
+				7610E3CE18F9CB4F0091F489 /* settings_icon.png in Resources */,
 				76640C2B18F8640A00666F55 /* Main.storyboard in Resources */,
 				7614073718AAE6F3009C8E3B /* Images.xcassets in Resources */,
 				7614072618AAE6F3009C8E3B /* InfoPlist.strings in Resources */,
@@ -389,15 +423,19 @@
 				7614073518AAE6F3009C8E3B /* CTSecondViewController.m in Sources */,
 				76EAA12D18F35174009CE526 /* CTLoginNavigationController.m in Sources */,
 				764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */,
+				7610E3DA18F9D5190091F489 /* FPPopoverController.m in Sources */,
 				76CA4A8418F4538E00BCBA93 /* User.m in Sources */,
 				76640C2E18F874E200666F55 /* SCContactsTableViewController.m in Sources */,
 				7614072C18AAE6F3009C8E3B /* CTAppDelegate.m in Sources */,
 				76BFEC1818ABE3C2000CFC86 /* NSString+SHAEncryption.m in Sources */,
+				7610E3DB18F9D5190091F489 /* FPPopoverView.m in Sources */,
 				76BFEC2218ABF5F8000CFC86 /* CTTabBarViewController.m in Sources */,
+				767DAFB018FB2C2E00565814 /* CTPopoverTableViewController.m in Sources */,
 				76CA4A8718F4538F00BCBA93 /* City.m in Sources */,
 				76AC893518F8489C00AA562F /* CTFirstViewController.m in Sources */,
 				76BFEC1518ABE394000CFC86 /* LoadURLJson.m in Sources */,
 				768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */,
+				7610E3DC18F9D5190091F489 /* FPTouchView.m in Sources */,
 				76BFEC1118ABE337000CFC86 /* BTSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

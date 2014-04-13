@@ -24,15 +24,8 @@
 -(NSMutableArray *)friendsInCurrentCity
 {
     NSMutableArray *array = [[[self.city users] allObjects] mutableCopy];
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-
-    for (User *user in array) {
-        if (user.name != nil) {
-            [returnArray addObject:user];
-        }
-    }
-
-    return returnArray;
+    [array removeObject:self];
+    return array; 
 }
 
 @end

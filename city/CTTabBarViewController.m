@@ -27,7 +27,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self setSelectedViewController:[self.viewControllers objectAtIndex:0]];
 }
 
 - (void)didReceiveMemoryWarning
