@@ -79,14 +79,14 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user setValue:@"McArthur Gill" forKey:@"name"];
-        [user setValue:@"mickgill2008@gmail.com" forKey:@"email"];
+        [user setValue:@"3343994374" forKey:@"phone"];
         NSLog(@"created %@", user.name);
         
         User *user1 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user1 setValue:@"Suzie Hotcakes" forKey:@"name"];
-        [user1 setValue:@"suzie@gmail.com" forKey:@"email"];
+        [user1 setValue:@"6144324790" forKey:@"phone"];
         NSLog(@"created %@", user1.name);
 
         
@@ -94,7 +94,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user2 setValue:@"Will Schreiber" forKey:@"name"];
-        [user2 setValue:@"will@gmail.com" forKey:@"email"];
+        [user2 setValue:@"2059360524" forKey:@"phone"];
         NSLog(@"created %@", user2.name);
 
         
@@ -102,7 +102,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user3 setValue:@"Reed Whitcraft" forKey:@"name"];
-        [user3 setValue:@"reed@gmail.com" forKey:@"email"];
+        [user3 setValue:@"6463225988" forKey:@"phone"];
         NSLog(@"created %@", user3.name);
 
         
@@ -110,7 +110,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user4 setValue:@"Sarah Betack" forKey:@"name"];
-        [user4 setValue:@"sarah@gmail.com" forKey:@"email"];
+        [user4 setValue:@"2038033319" forKey:@"phone"];
         NSLog(@"created %@", user4.name);
 
         
@@ -118,7 +118,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user5 setValue:@"Sam Gray" forKey:@"name"];
-        [user5 setValue:@"buttmunch@gmail.com" forKey:@"email"];
+        [user5 setValue:@"2055401018" forKey:@"phone"];
         NSLog(@"created %@", user5.name);
 
         
@@ -126,7 +126,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user6 setValue:@"Andrew Kuykendall" forKey:@"name"];
-        [user6 setValue:@"andrew@gmail.com" forKey:@"email"];
+        [user6 setValue:@"3528431711" forKey:@"phone"];
         NSLog(@"created %@", user6.name);
 
         
@@ -134,7 +134,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user7 setValue:@"George Harwood" forKey:@"name"];
-        [user7 setValue:@"ghar@gmail.com" forKey:@"email"];
+        [user7 setValue:@"3345469168" forKey:@"phone"];
         NSLog(@"created %@", user7.name);
 
         
@@ -142,7 +142,7 @@ static BTSession* thisSession = nil;
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user8 setValue:@"Pierce Cobb" forKey:@"name"];
-        [user8 setValue:@"pierce@gmail.com" forKey:@"email"];
+        [user8 setValue:@"3343011335" forKey:@"phone"];
         NSLog(@"created %@", user8.name);
 
         
@@ -210,7 +210,7 @@ static BTSession* thisSession = nil;
             [self loginUser:person];
         }
         NSLog(@"Name: %@", person.name);
-        NSLog(@"Email: %@", person.email);
+        NSLog(@"Phone: %@", person.phone);
         NSLog(@"user => city: %@", [person.city cityName]);
     }
     NSLog(@"loggedInUser : %@", [[self loggedInUser] name]);

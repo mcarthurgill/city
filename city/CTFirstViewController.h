@@ -13,8 +13,9 @@
 #import "ARCMacros.h"
 #import "CTPopoverTableViewController.h"
 #import "BTSession.h"
+#import <MessageUI/MessageUI.h>
 
-@interface CTFirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FPPopoverControllerDelegate>
+@interface CTFirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FPPopoverControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *friendsToChat;
 @property (strong, nonatomic) NSMutableArray *friendsInCity;

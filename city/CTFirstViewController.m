@@ -196,7 +196,56 @@
 
 -(void)startChat:(id)sender{
     NSLog(@"friendsToChat : %@", friendsToChat);
+    NSMutableArray *numbers = [[NSMutableArray alloc] init];
+    for (User *user in friendsToChat) {
+        [numbers addObject:user.phone];
+    }
+    [self showSMS:[numbers copy]];
+}
+
+#pragma mark - Message Delegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send your message!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)showSMS:(NSArray *)friendsNumbers {
+    
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
+    
+    User *currentUser = [thisSession loggedInUser];
+    NSString *message = [NSString stringWithFormat:@"Hey I'm in %@! We should hang.", [[currentUser city] cityName]];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setRecipients:friendsNumbers];
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
 }
 
 @end

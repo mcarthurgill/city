@@ -12,7 +12,7 @@
 
 @implementation User
 
-@dynamic email;
+@dynamic phone;
 @dynamic name;
 @dynamic city;
 @dynamic city_id;

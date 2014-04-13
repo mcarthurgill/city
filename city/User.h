@@ -13,7 +13,7 @@
 
 @interface User : NSManagedObject
 
-@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * city_id;
 @property (nonatomic, retain) City *city;
