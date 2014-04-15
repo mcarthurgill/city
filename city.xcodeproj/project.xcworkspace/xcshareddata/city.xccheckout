@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7EE9ECCF-F80F-4A8F-BF12-6171F1BCFA11</string>
+	<key>IDESourceControlProjectName</key>
+	<string>city</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D3658074-627A-48DD-8B19-45D13DA02025</key>
+		<string>https://bitbucket.org/busproductions/city.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>city.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D3658074-627A-48DD-8B19-45D13DA02025</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/busproductions/city.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D3658074-627A-48DD-8B19-45D13DA02025</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D3658074-627A-48DD-8B19-45D13DA02025</string>
+			<key>IDESourceControlWCCName</key>
+			<string>city</string>
+		</dict>
+	</array>
+</dict>
+</plist>
