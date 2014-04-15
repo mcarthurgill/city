@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="o6Z-lV-8Cv">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="o6Z-lV-8Cv">
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
+<<<<<<< HEAD
+=======
+        <!--First View Controller - Cities-->
+        <scene sceneID="ZZm-79-N1b">
+            <objects>
+                <viewController storyboardIdentifier="CTFirstViewController" id="a1E-eT-o7H" customClass="CTFirstViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Ro-fQ-mRT"/>
+                        <viewControllerLayoutGuide type="bottom" id="HbZ-Tf-04M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hjQ-Le-xUc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yah-XO-6WS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="0V5-zd-Kld"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Cities" image="first" id="9fp-WA-yLa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvf-97-Jjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="-1199"/>
+        </scene>
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
         <!--Login Navigation Controller-->
         <scene sceneID="DAz-Xd-tjv">
             <objects>
@@ -20,32 +55,55 @@
         <scene sceneID="FlD-1x-MMI">
             <objects>
                 <viewController restorationIdentifier="loginViewController" storyboardIdentifier="loginViewController" id="Wk9-Qv-clp" customClass="CTLoginViewController" sceneMemberID="viewController">
+<<<<<<< HEAD
+=======
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A04-Gq-LCY"/>
+                        <viewControllerLayoutGuide type="bottom" id="oqY-4j-bcX"/>
+                    </layoutGuides>
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                     <view key="view" contentMode="scaleToFill" id="jNq-kT-L7a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="2ak-j0-Qhq">
+=======
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2ak-j0-Qhq">
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                                 <rect key="frame" x="20" y="136" width="280" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.019158655696975946" green="1" blue="0.49523026851562413" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+<<<<<<< HEAD
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="5J3-RR-uD5">
+=======
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5J3-RR-uD5">
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                                 <rect key="frame" x="20" y="184" width="280" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.019158655699999999" green="1" blue="0.49523026850000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+<<<<<<< HEAD
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="B5l-RS-b8n">
+=======
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B5l-RS-b8n">
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                                 <rect key="frame" x="20" y="232" width="280" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.019158655699999999" green="1" blue="0.49523026850000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YZA-xP-epe">
+=======
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZA-xP-epe">
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                                 <rect key="frame" x="20" y="280" width="280" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.49359451857151948" blue="0.85209519489003294" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,7 +114,11 @@
                                     <action selector="loginButtonAction:" destination="Wk9-Qv-clp" eventType="touchUpInside" id="bPd-ua-l60"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start discovering your city!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fA9-Sh-bon">
+=======
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start discovering your city!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA9-Sh-bon">
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                                 <rect key="frame" x="20" y="85" width="280" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -96,14 +158,20 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+<<<<<<< HEAD
                         <segue destination="C9y-mB-itk" kind="relationship" relationship="viewControllers" id="Krz-Xe-LuV"/>
                         <segue destination="UBQ-BK-YDP" kind="relationship" relationship="viewControllers" id="ELY-YD-HYk"/>
+=======
+                        <segue destination="a1E-eT-o7H" kind="relationship" relationship="viewControllers" id="UiD-2a-Fcy"/>
+                        <segue destination="rgb-QS-psv" kind="relationship" relationship="viewControllers" id="Xja-79-P73"/>
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="166" y="118"/>
         </scene>
+<<<<<<< HEAD
         <!--Navigation Controller-->
         <scene sceneID="9SV-tD-39W">
             <objects>
@@ -209,6 +277,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKZ-AM-fDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1371" y="-866"/>
+=======
+        <!--Second Table View Controller-->
+        <scene sceneID="h0u-Us-UTv">
+            <objects>
+                <tableViewController id="rgb-QS-psv" customClass="CTSecondTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="scQ-4H-reK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZcR-JF-b8a">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZcR-JF-b8a" id="CRe-0D-ypo">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rgb-QS-psv" id="kcs-n5-DAk"/>
+                            <outlet property="delegate" destination="rgb-QS-psv" id="79A-BO-dqI"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="4uy-ER-PXa"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J85-o6-ld3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="-276"/>
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
         </scene>
     </scenes>
     <resources>

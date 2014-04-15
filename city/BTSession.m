@@ -33,9 +33,12 @@ static BTSession* thisSession = nil;
 //@synthesize thisViewDeck;
 @synthesize notificationMessageViews;
 @synthesize venueTypes;
+<<<<<<< HEAD
 @synthesize friendsInCity;
 @synthesize friendsToChat;
 @synthesize venuesInMyCity; 
+=======
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 
 //constructor
 -(id) init
@@ -254,7 +257,11 @@ static BTSession* thisSession = nil;
                          inManagedObjectContext:context];
         [virago setValue:@"Virago" forKey:@"venueName"];
         [virago setVenueType:restaurant];
+<<<<<<< HEAD
         [nash addVenuesObject:virago];
+=======
+        [nash addVenuesObject:kayne];
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
         
         Venue *dog = [NSEntityDescription
                          insertNewObjectForEntityForName:@"Venue"
@@ -463,6 +470,7 @@ static BTSession* thisSession = nil;
 }
 
 
+<<<<<<< HEAD
 - (void)setupVenueData:(City *)city {
     NSMutableArray *venues = [[city venues] mutableCopy];
     NSMutableArray *bars = [[NSMutableArray alloc] init];
@@ -482,6 +490,8 @@ static BTSession* thisSession = nil;
 }
 
 
+=======
+>>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 - (void) checkForLoggedInUser
 {
 //   NSManagedObjectContext *moc = [(CTAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
