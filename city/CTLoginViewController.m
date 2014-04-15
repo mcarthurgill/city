@@ -15,7 +15,7 @@
 @implementation CTLoginViewController
 
 @synthesize nameField;
-@synthesize emailField;
+@synthesize phoneField;
 @synthesize passwordField;
 @synthesize loginButton;
 
@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     nameField.delegate = self;
-    emailField.delegate = self;
+    phoneField.delegate = self;
     passwordField.delegate = self;
 }
 

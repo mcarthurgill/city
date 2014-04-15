@@ -33,11 +33,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self editNavBar];
     
     thisSession = [BTSession thisSession];
     friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
-
+    
+    [self editNavBar];
     [self createTable];
     [self addTableToView];
     
@@ -106,7 +106,7 @@
 
 - (void)editNavBar {
     self.tabBarController.navigationItem.title = [[thisSession loggedInUser] currentCity];
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(chooseCityButtonTapped:)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings_icon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(chooseCityButtonTapped:)];
     self.tabBarController.navigationItem.rightBarButtonItem = item;
 }
 

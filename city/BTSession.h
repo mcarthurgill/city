@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LoadURLJson.h"
 #import "User.h"
+#import "VenueType.h"
+#import "Venue.h"
 //#import "Post.h"
 //#import "Group.h"
 //#import "IIViewDeckController.h"
@@ -48,6 +50,8 @@
 //@property (strong, nonatomic) IIViewDeckController* thisViewDeck;
 
 @property (strong, nonatomic) NSMutableArray* notificationMessageViews;
+
+@property (strong, nonatomic) NSArray *venueTypes; 
 
 
 //METHODS

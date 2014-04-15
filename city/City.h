@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Venue.h"
 
 @class User;
 
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * cityName;
 @property (nonatomic, retain) NSSet *users;
+@property (nonatomic, retain) NSSet *venues; 
 @end
 
 @interface City (CoreDataGeneratedAccessors)
@@ -25,6 +27,12 @@
 - (void)removeUsersObject:(User *)value;
 - (void)addUsers:(NSSet *)values;
 - (void)removeUsers:(NSSet *)values;
+
+- (void)addVenuesObject:(Venue *)value;
+- (void)removeVenuesObject:(Venue *)value;
+- (void)addVenues:(NSSet *)values;
+- (void)removeVenues:(NSSet *)values;
+
 + (NSMutableArray *)allCities;
 
 @end

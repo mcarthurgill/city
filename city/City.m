@@ -17,6 +17,7 @@
 @dynamic longitude;
 @dynamic cityName;
 @dynamic users;
+@dynamic venues; 
 
 + (NSMutableArray *)allCities
 {

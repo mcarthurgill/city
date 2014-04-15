@@ -32,6 +32,7 @@ static BTSession* thisSession = nil;
 //@synthesize visiblePost;
 //@synthesize thisViewDeck;
 @synthesize notificationMessageViews;
+@synthesize venueTypes;
 
 //constructor
 -(id) init
@@ -69,7 +70,7 @@ static BTSession* thisSession = nil;
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:context]];
+    [request setEntity:[NSEntityDescription entityForName:@"Venue" inManagedObjectContext:context]];
     
     NSError *err;
     NSUInteger count = [context countForFetchRequest:request error:&err];
@@ -180,7 +181,8 @@ static BTSession* thisSession = nil;
         [cinci setValue:sflat forKey:@"latitude"];
         [cinci setValue:@"Cincinnati" forKeyPath:@"cityName"];
         NSLog(@"created %@", cinci.cityName);
-
+        
+        
         [nash addUsersObject:user];
         [nash addUsersObject:user2];
         [nash addUsersObject:user4];
@@ -192,6 +194,78 @@ static BTSession* thisSession = nil;
         [gump addUsersObject:user8];
         
         [cinci addUsersObject:user1];
+        
+        
+        //VenueTypes
+        VenueType *bar = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"VenueType"
+                        inManagedObjectContext:context];
+        [bar setValue:@"Bar" forKey:@"typeName"];
+        
+        VenueType *restaurant = [NSEntityDescription
+                          insertNewObjectForEntityForName:@"VenueType"
+                          inManagedObjectContext:context];
+        [restaurant setValue:@"Restaurant" forKey:@"typeName"];
+        NSLog(@"created venuetypes");
+        
+        
+        //Venues
+        Venue *winners = [NSEntityDescription
+                          insertNewObjectForEntityForName:@"Venue"
+                          inManagedObjectContext:context];
+        [winners setValue:@"Winners" forKey:@"venueName"];
+        [winners setVenueType:bar];
+        NSLog(@"got here");
+        [nash addVenuesObject:winners];
+        NSLog(@"but not here");
+        Venue *rebar = [NSEntityDescription
+                          insertNewObjectForEntityForName:@"Venue"
+                          inManagedObjectContext:context];
+        [rebar setValue:@"Rebar" forKey:@"venueName"];
+        [rebar setVenueType:bar];
+        [nash addVenuesObject:rebar];
+        
+        Venue *rippys = [NSEntityDescription
+                          insertNewObjectForEntityForName:@"Venue"
+                          inManagedObjectContext:context];
+        [rippys setValue:@"Rippys" forKey:@"venueName"];
+        [rippys setVenueType:bar];
+        [nash addVenuesObject:rippys];
+        
+        Venue *losers = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Venue"
+                         inManagedObjectContext:context];
+        [losers setValue:@"Losers" forKey:@"venueName"];
+        [losers setVenueType:bar];
+        [nash addVenuesObject:losers];
+        
+        Venue *kayne = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Venue"
+                         inManagedObjectContext:context];
+        [kayne setValue:@"Kayne Prime" forKey:@"venueName"];
+        [kayne setVenueType:restaurant];
+        [nash addVenuesObject:kayne];
+        
+        Venue *virago = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Venue"
+                         inManagedObjectContext:context];
+        [virago setValue:@"Virago" forKey:@"venueName"];
+        [virago setVenueType:restaurant];
+        [nash addVenuesObject:kayne];
+        
+        Venue *dog = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Venue"
+                         inManagedObjectContext:context];
+        [dog setValue:@"The Dog" forKey:@"venueName"];
+        [dog setVenueType:restaurant];
+        [nash addVenuesObject:dog];
+        
+        Venue *taco = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Venue"
+                         inManagedObjectContext:context];
+        [taco setValue:@"Local Taco" forKey:@"venueName"];
+        [taco setVenueType:restaurant];
+        [nash addVenuesObject:taco];
         
         NSError *error;
         if (![context save:&error]) {
@@ -213,7 +287,15 @@ static BTSession* thisSession = nil;
         NSLog(@"Phone: %@", person.phone);
         NSLog(@"user => city: %@", [person.city cityName]);
     }
+    
     NSLog(@"loggedInUser : %@", [[self loggedInUser] name]);
+    
+    NSFetchRequest *fr = [[NSFetchRequest alloc] init];
+    NSEntityDescription *ent = [NSEntityDescription
+                                   entityForName:@"VenueType" inManagedObjectContext:context];
+    [fr setEntity:ent];
+    NSArray *fo = [context executeFetchRequest:fr error:&error];
+    venueTypes = [[NSArray alloc] initWithArray:fo];
 }
 
 - (NSDictionary*) countryCallingCodes

@@ -11,7 +11,7 @@
 @interface CTLoginViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
-@property (strong, nonatomic) IBOutlet UITextField *emailField;
+@property (strong, nonatomic) IBOutlet UITextField *phoneField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 
 - (IBAction)loginButtonAction:(id)sender;
