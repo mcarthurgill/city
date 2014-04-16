@@ -32,14 +32,11 @@
 
 @property (strong, nonatomic) User* loggedInUser;
 
-<<<<<<< HEAD
 @property (strong, nonatomic) NSMutableArray *friendsToChat;
 @property (strong, nonatomic) NSMutableArray *friendsInCity;
 @property (strong, nonatomic) NSArray *venuesInMyCity;
 
 
-=======
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 @property (strong, nonatomic) NSString* actionAfterLogin;
 
 //@property (strong, nonatomic) Group* currentGroup;
@@ -66,11 +63,8 @@
 
 - (BOOL) isLoggedIn;
 
-<<<<<<< HEAD
 - (void)setupVenueData:(City *)city;
 
-=======
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 - (UIColor*) greenColor;
 - (UIColor*) greenColorTrans;
 - (UIColor*) redColor;

@@ -25,12 +25,9 @@
 {
     NSMutableArray *array = [[[self.city users] allObjects] mutableCopy];
     [array removeObject:self];
-<<<<<<< HEAD
     [array addObjectsFromArray:array];
     [array addObjectsFromArray:array];
     [array addObjectsFromArray:array];
-=======
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
     return array; 
 }
 
