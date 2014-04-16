@@ -71,15 +71,9 @@
 #pragma mark - Table view delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-<<<<<<< HEAD
     City *selectedCity = [cities objectAtIndex:indexPath.row];
     if([self.delegate respondsToSelector:@selector(chooseSelectedCity:)])
     {
-=======
-    if([self.delegate respondsToSelector:@selector(chooseSelectedCity:)])
-    {
-        City *selectedCity = [cities objectAtIndex:indexPath.row];
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
         [self.delegate chooseSelectedCity:selectedCity];
     }
 }
