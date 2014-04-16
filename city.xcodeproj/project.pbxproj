@@ -24,31 +24,18 @@
 		7614074818AAE6F3009C8E3B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7614074618AAE6F3009C8E3B /* InfoPlist.strings */; };
 		7614074A18AAE6F3009C8E3B /* cityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7614074918AAE6F3009C8E3B /* cityTests.m */; };
 		7614075518AAE953009C8E3B /* CTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7614075418AAE953009C8E3B /* CTLoginViewController.m */; };
-<<<<<<< HEAD
 		7639111918FD6326005B39F7 /* CTSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7639111818FD6326005B39F7 /* CTSecondViewController.m */; };
 		764627DC18FD72E700816AC3 /* CTFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764627DB18FD72E700816AC3 /* CTFirstViewController.m */; };
 		764808A118B7B4F5009208F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764808A018B7B4F5009208F0 /* CoreData.framework */; };
 		764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 764808A218B7B562009208F0 /* city.xcdatamodeld */; };
 		7654AF9218FDD8C900EF6659 /* CTSecondPopoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7654AF9118FDD8C900EF6659 /* CTSecondPopoverTableViewController.m */; };
-=======
-		764808A118B7B4F5009208F0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764808A018B7B4F5009208F0 /* CoreData.framework */; };
-		764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 764808A218B7B562009208F0 /* city.xcdatamodeld */; };
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 		76640C2B18F8640A00666F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76640C2A18F8640A00666F55 /* Main.storyboard */; };
 		76640C2E18F874E200666F55 /* SCContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76640C2D18F874E200666F55 /* SCContactsTableViewController.m */; };
 		767DAFB018FB2C2E00565814 /* CTPopoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */; };
 		767DAFB218FB3B9800565814 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 767DAFB118FB3B9800565814 /* MessageUI.framework */; };
-<<<<<<< HEAD
 		768547D318FC97F90000BA81 /* VenueType.m in Sources */ = {isa = PBXBuildFile; fileRef = 768547D218FC97F90000BA81 /* VenueType.m */; };
 		768547D618FC97FA0000BA81 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 768547D518FC97FA0000BA81 /* Venue.m */; };
 		768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */; };
-=======
-		768547D018FC96C80000BA81 /* CTSecondTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768547CF18FC96C70000BA81 /* CTSecondTableViewController.m */; };
-		768547D318FC97F90000BA81 /* VenueType.m in Sources */ = {isa = PBXBuildFile; fileRef = 768547D218FC97F90000BA81 /* VenueType.m */; };
-		768547D618FC97FA0000BA81 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 768547D518FC97FA0000BA81 /* Venue.m */; };
-		768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */; };
-		76AC893518F8489C00AA562F /* CTFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AC893418F8489C00AA562F /* CTFirstViewController.m */; };
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 		76BFEC1118ABE337000CFC86 /* BTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BFEC1018ABE337000CFC86 /* BTSession.m */; };
 		76BFEC1518ABE394000CFC86 /* LoadURLJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BFEC1418ABE394000CFC86 /* LoadURLJson.m */; };
 		76BFEC1818ABE3C2000CFC86 /* NSString+SHAEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BFEC1718ABE3C2000CFC86 /* NSString+SHAEncryption.m */; };
@@ -97,7 +84,6 @@
 		7614074918AAE6F3009C8E3B /* cityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cityTests.m; sourceTree = "<group>"; };
 		7614075318AAE953009C8E3B /* CTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLoginViewController.h; sourceTree = "<group>"; };
 		7614075418AAE953009C8E3B /* CTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLoginViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		7639111718FD6326005B39F7 /* CTSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSecondViewController.h; sourceTree = "<group>"; };
 		7639111818FD6326005B39F7 /* CTSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSecondViewController.m; sourceTree = "<group>"; };
 		764627DA18FD72E700816AC3 /* CTFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFirstViewController.h; sourceTree = "<group>"; };
@@ -106,32 +92,18 @@
 		764808A318B7B562009208F0 /* city.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = city.xcdatamodel; sourceTree = "<group>"; };
 		7654AF9018FDD8C900EF6659 /* CTSecondPopoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSecondPopoverTableViewController.h; sourceTree = "<group>"; };
 		7654AF9118FDD8C900EF6659 /* CTSecondPopoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSecondPopoverTableViewController.m; sourceTree = "<group>"; };
-=======
-		764808A018B7B4F5009208F0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		764808A318B7B562009208F0 /* city.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = city.xcdatamodel; sourceTree = "<group>"; };
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 		76640C2A18F8640A00666F55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		76640C2C18F874E200666F55 /* SCContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCContactsTableViewController.h; sourceTree = "<group>"; };
 		76640C2D18F874E200666F55 /* SCContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCContactsTableViewController.m; sourceTree = "<group>"; };
 		767DAFAE18FB2C2E00565814 /* CTPopoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPopoverTableViewController.h; sourceTree = "<group>"; };
 		767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPopoverTableViewController.m; sourceTree = "<group>"; };
 		767DAFB118FB3B9800565814 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-<<<<<<< HEAD
-=======
-		768547CE18FC96C70000BA81 /* CTSecondTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSecondTableViewController.h; sourceTree = "<group>"; };
-		768547CF18FC96C70000BA81 /* CTSecondTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSecondTableViewController.m; sourceTree = "<group>"; };
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 		768547D118FC97F90000BA81 /* VenueType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueType.h; sourceTree = "<group>"; };
 		768547D218FC97F90000BA81 /* VenueType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueType.m; sourceTree = "<group>"; };
 		768547D418FC97FA0000BA81 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		768547D518FC97FA0000BA81 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTContactHolderViewController.h; sourceTree = "<group>"; };
 		768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTContactHolderViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-		76AC893318F8489C00AA562F /* CTFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFirstViewController.h; sourceTree = "<group>"; };
-		76AC893418F8489C00AA562F /* CTFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFirstViewController.m; sourceTree = "<group>"; };
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 		76BFEC0F18ABE337000CFC86 /* BTSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSession.h; sourceTree = "<group>"; };
 		76BFEC1018ABE337000CFC86 /* BTSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSession.m; sourceTree = "<group>"; };
 		76BFEC1318ABE394000CFC86 /* LoadURLJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadURLJson.h; sourceTree = "<group>"; };
@@ -309,7 +281,6 @@
 			children = (
 				76BFEC2018ABF5F8000CFC86 /* CTTabBarViewController.h */,
 				76BFEC2118ABF5F8000CFC86 /* CTTabBarViewController.m */,
-<<<<<<< HEAD
 				764627DA18FD72E700816AC3 /* CTFirstViewController.h */,
 				764627DB18FD72E700816AC3 /* CTFirstViewController.m */,
 				767DAFAE18FB2C2E00565814 /* CTPopoverTableViewController.h */,
@@ -318,14 +289,6 @@
 				7639111818FD6326005B39F7 /* CTSecondViewController.m */,
 				7654AF9018FDD8C900EF6659 /* CTSecondPopoverTableViewController.h */,
 				7654AF9118FDD8C900EF6659 /* CTSecondPopoverTableViewController.m */,
-=======
-				76AC893318F8489C00AA562F /* CTFirstViewController.h */,
-				76AC893418F8489C00AA562F /* CTFirstViewController.m */,
-				767DAFAE18FB2C2E00565814 /* CTPopoverTableViewController.h */,
-				767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */,
-				768547CE18FC96C70000BA81 /* CTSecondTableViewController.h */,
-				768547CF18FC96C70000BA81 /* CTSecondTableViewController.m */,
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -488,18 +451,11 @@
 				76BFEC2218ABF5F8000CFC86 /* CTTabBarViewController.m in Sources */,
 				767DAFB018FB2C2E00565814 /* CTPopoverTableViewController.m in Sources */,
 				76CA4A8718F4538F00BCBA93 /* City.m in Sources */,
-<<<<<<< HEAD
 				7654AF9218FDD8C900EF6659 /* CTSecondPopoverTableViewController.m in Sources */,
 				7639111918FD6326005B39F7 /* CTSecondViewController.m in Sources */,
 				768547D318FC97F90000BA81 /* VenueType.m in Sources */,
 				76BFEC1518ABE394000CFC86 /* LoadURLJson.m in Sources */,
 				764627DC18FD72E700816AC3 /* CTFirstViewController.m in Sources */,
-=======
-				76AC893518F8489C00AA562F /* CTFirstViewController.m in Sources */,
-				768547D018FC96C80000BA81 /* CTSecondTableViewController.m in Sources */,
-				768547D318FC97F90000BA81 /* VenueType.m in Sources */,
-				76BFEC1518ABE394000CFC86 /* LoadURLJson.m in Sources */,
->>>>>>> 0819c9c8b92a14a4092897ffb410822a947979f3
 				768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */,
 				7610E3DC18F9D5190091F489 /* FPTouchView.m in Sources */,
 				76BFEC1118ABE337000CFC86 /* BTSession.m in Sources */,
