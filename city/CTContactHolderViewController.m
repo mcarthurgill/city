@@ -39,6 +39,16 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated]; 
+    [self.tabBarController.navigationController setNavigationBarHidden:YES];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.tabBarController.navigationController setNavigationBarHidden:NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

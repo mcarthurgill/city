@@ -259,8 +259,6 @@
 		768E10C218AC115700BC55B9 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */,
-				768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */,
 				76640C2C18F874E200666F55 /* SCContactsTableViewController.h */,
 				76640C2D18F874E200666F55 /* SCContactsTableViewController.m */,
 			);
@@ -289,6 +287,8 @@
 				7639111818FD6326005B39F7 /* CTSecondViewController.m */,
 				7654AF9018FDD8C900EF6659 /* CTSecondPopoverTableViewController.h */,
 				7654AF9118FDD8C900EF6659 /* CTSecondPopoverTableViewController.m */,
+				768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */,
+				768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";

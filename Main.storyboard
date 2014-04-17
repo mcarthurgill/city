@@ -98,6 +98,7 @@
                     <connections>
                         <segue destination="C9y-mB-itk" kind="relationship" relationship="viewControllers" id="Krz-Xe-LuV"/>
                         <segue destination="UBQ-BK-YDP" kind="relationship" relationship="viewControllers" id="ELY-YD-HYk"/>
+                        <segue destination="A05-a4-1JC" kind="relationship" relationship="viewControllers" id="1O1-vJ-1BY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
@@ -119,6 +120,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUy-jP-bbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928" y="-37"/>
+        </scene>
+        <!--Contact Holder View Controller - Item-->
+        <scene sceneID="NdT-Hb-qFP">
+            <objects>
+                <viewController id="A05-a4-1JC" customClass="CTContactHolderViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ghq-4k-QmK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="piC-OH-2zX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDy-0J-Kny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908" y="685"/>
         </scene>
         <!--Navigation Controller - Cities-->
         <scene sceneID="7GR-mF-7ny">

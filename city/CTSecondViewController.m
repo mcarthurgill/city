@@ -81,6 +81,30 @@
     return [[[thisSession.venuesInMyCity objectAtIndex:section] allKeys] firstObject];
 }
 
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    CGRect frame = tableView.frame;
+//    NSLog(@"frame : %@", NSStringFromCGRect(frame));
+//    NSLog(@"size : %@", NSStringFromCGSize(frame.size));
+//    NSLog(@"height : %f", frame.size.height);
+//    NSLog(@"width : %f", frame.size.width);
+//    
+//    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(frame.size.width-60, 0, 50, 15)];
+//    addButton.titleLabel.text = @"type";
+//    addButton.backgroundColor = [UIColor redColor];
+//    [button addTarget:self action:@selector(insertParameter:) forControlEvents:UIControlEventTouchDown];
+
+//
+//    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 30)];
+//    title.text = [[[thisSession.venuesInMyCity objectAtIndex:section] allKeys] firstObject];
+//    
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+//    [headerView addSubview:title];
+//    [headerView addSubview:addButton];
+//    headerView.backgroundColor = [UIColor lightGrayColor];
+//    
+//    return headerView;
+//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
