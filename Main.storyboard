@@ -128,9 +128,71 @@
                     <view key="view" contentMode="scaleToFill" id="Ghq-4k-QmK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pvl-dz-JFh">
+                                <rect key="frame" x="-71" y="56" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WQ5-oj-N7O">
+                                <rect key="frame" x="20" y="29" width="83" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31890122264018173" green="0.93463465240916899" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Contacts">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addContact:" destination="A05-a4-1JC" eventType="touchUpInside" id="Jqi-JP-2nh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TMc-dl-72c">
+                                <rect key="frame" x="119" y="29" width="83" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31890122259999998" green="0.93463465239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Added Me">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addedMe:" destination="A05-a4-1JC" eventType="touchUpInside" id="Sac-6G-PDU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YhN-HM-SoN">
+                                <rect key="frame" x="218" y="29" width="82" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31890122259999998" green="0.93463465239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="search:" destination="A05-a4-1JC" eventType="touchUpInside" id="SaN-VD-Ugs"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n52-Nv-AWO">
+                                <rect key="frame" x="0.0" y="94" width="320" height="474"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z3A-OK-clQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="474"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </tableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="A05-a4-1JC" id="U1X-rG-VlI"/>
+                                    <outlet property="delegate" destination="A05-a4-1JC" id="Tnc-GS-OQO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="piC-OH-2zX"/>
+                    <connections>
+                        <outlet property="addContactButton" destination="WQ5-oj-N7O" id="d9k-CY-bpK"/>
+                        <outlet property="addedMeButton" destination="TMc-dl-72c" id="SCa-RW-WZe"/>
+                        <outlet property="myTable" destination="n52-Nv-AWO" id="rvK-Wg-TZL"/>
+                        <outlet property="searchButton" destination="YhN-HM-SoN" id="w4a-DR-Gp3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDy-0J-Kny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

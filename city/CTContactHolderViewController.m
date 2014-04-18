@@ -17,9 +17,10 @@
 @synthesize myTable;
 @synthesize selectedContacts;
 @synthesize selectedButton;
-//make 3 uiTableViews that have their own data
-//then inside the table view controller i wanna set the datasource depending on which button was clicked
-//but first just try to get some seed data showing up for add contacts
+@synthesize searchButton;
+@synthesize addContactButton;
+@synthesize addedMeButton;
+@synthesize thisSession;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,12 +36,13 @@
     [super viewDidLoad];
     myTable.delegate = self;
     myTable.dataSource = self;
+    thisSession = [BTSession thisSession];
     self.selectedButton = @"addContacts";
-	// Do any additional setup after loading the view.
+    [myTable setContentInset:UIEdgeInsetsMake(myTable.contentInset.top, 0, self.navigationController.toolbar.frame.size.height, 0)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated]; 
+    [super viewWillAppear:animated];
     [self.tabBarController.navigationController setNavigationBarHidden:YES];
 }
 
@@ -52,7 +54,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)addContact:(id)sender {
@@ -65,7 +66,7 @@
     [[self myTable] reloadData];
 }
 
-- (IBAction)searchButton:(id)sender {
+- (IBAction)search:(id)sender {
     self.selectedButton = @"search";
     [[self myTable] reloadData];
 }
@@ -82,28 +83,55 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"number of rows in section");
+    NSLog(@"need to replace these values with contacts who have added them etc.");
     if ([[self selectedButton] isEqualToString:@"addContacts"]) {
-        return 1;
+        return thisSession.friendsInCity.count;
     }else if ([[self selectedButton] isEqualToString:@"addedMe"]) {
-        return 2;
+        return thisSession.friendsInCity.count;
     }
-    return 3;
+    return thisSession.friendsInCity.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"contactCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"cell";
     
-    UILabel* contactName = (UILabel*) [cell.contentView viewWithTag:1];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    [contactName setText:@"McArthur"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"unchecked.png"]];
-    cell.accessoryView = imageView;
+    if ([thisSession.friendsToChat containsObject:[thisSession.friendsInCity objectAtIndex:indexPath.row]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+
+    cell.textLabel.text = [[thisSession.friendsInCity objectAtIndex:indexPath.row] name];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    User *contact = [thisSession.friendsInCity objectAtIndex:indexPath.row];
+    if ([selectedContacts containsObject:contact]) {
+        [selectedContacts removeObject:contact];
+        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+    } else {
+        [selectedContacts addObject:contact];
+        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if ([[self selectedButton] isEqualToString:@"addContacts"]) {
+        return @"Add friends already on City";
+    }else if ([[self selectedButton] isEqualToString:@"addedMe"]) {
+        return @"My Friends on City";
+    }
+    return @"this should be a search bar...";
 }
 
 

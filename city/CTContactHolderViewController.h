@@ -7,15 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import "BTSession.h"
 
 @interface CTContactHolderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UIButton *addContactButton;
+@property (strong, nonatomic) IBOutlet UIButton *addedMeButton;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
 
 - (IBAction)addContact:(id)sender;
 - (IBAction)addedMe:(id)sender;
-- (IBAction)searchButton:(id)sender;
+- (IBAction)search:(id)sender;
 
-@property (strong, nonatomic) NSMutableDictionary* selectedContacts;
+@property (strong, nonatomic) NSMutableArray* selectedContacts;
 @property (strong, nonatomic) NSString *selectedButton;
 @property (strong, nonatomic) IBOutlet UITableView *myTable;
+@property (strong, nonatomic) BTSession *thisSession;
+
 
 @end
