@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Joseph McArthur Gill. All rights reserved.
 //
 
+@import AddressBook;
+
 #import "CTContactHolderViewController.h"
 
 @interface CTContactHolderViewController ()
@@ -21,6 +23,7 @@
 @synthesize addContactButton;
 @synthesize addedMeButton;
 @synthesize thisSession;
+@synthesize allContacts;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,11 +37,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    myTable.delegate = self;
-    myTable.dataSource = self;
+
     thisSession = [BTSession thisSession];
     self.selectedButton = @"addContacts";
-    [myTable setContentInset:UIEdgeInsetsMake(myTable.contentInset.top, 0, self.navigationController.toolbar.frame.size.height, 0)];
+
+    allContacts = [[NSMutableArray alloc] init];
+    selectedContacts = [[NSMutableArray alloc] init];
+    [self prePermission];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,45 +90,42 @@
 {
     NSLog(@"need to replace these values with contacts who have added them etc.");
     if ([[self selectedButton] isEqualToString:@"addContacts"]) {
-        return thisSession.friendsInCity.count;
+        return allContacts.count;
     }else if ([[self selectedButton] isEqualToString:@"addedMe"]) {
-        return thisSession.friendsInCity.count;
+        return allContacts.count;
     }
     return thisSession.friendsInCity.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"cell";
+    static NSString *CellIdentifier = @"contactCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UILabel* contact = (UILabel*) [cell.contentView viewWithTag:1];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    if ([thisSession.friendsToChat containsObject:[thisSession.friendsInCity objectAtIndex:indexPath.row]]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    [self setCheckMarkImageForCell:cell AtIndexPath:indexPath];
 
-    cell.textLabel.text = [[thisSession.friendsInCity objectAtIndex:indexPath.row] name];
+    [contact setText:[[allContacts objectAtIndex:indexPath.row] valueForKey:@"name"]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    User *contact = [thisSession.friendsInCity objectAtIndex:indexPath.row];
-    if ([selectedContacts containsObject:contact]) {
-        [selectedContacts removeObject:contact];
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
-    } else {
+    NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
+    if (![selectedContacts containsObject:contact]) {
         [selectedContacts addObject:contact];
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+        [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
     }
 }
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
+    if ([selectedContacts containsObject:contact]) {
+        [selectedContacts removeObject:contact];
+         [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
+    }
+  }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if ([[self selectedButton] isEqualToString:@"addContacts"]) {
@@ -134,6 +136,95 @@
     return @"this should be a search bar...";
 }
 
+- (void) setCheckMarkImageForCell:(UITableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath {
+    UIImageView* cellCheckmark = (UIImageView*) [cell.contentView viewWithTag:2];
+    
+    NSString *imageName = @"unchecked.png";
+    if ([selectedContacts containsObject:[allContacts objectAtIndex:indexPath.row]]) {
+        imageName = @"checked.png";
+    }
+    
+    UIImage* image = [UIImage imageNamed:imageName];
+    [cellCheckmark setImage:image];
+}
 
+# pragma mark - permissions
+
+- (void)prePermission {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Find your friends" message:@"In order to find your friends who have City, we need permission to load your contacts" delegate:self cancelButtonTitle:@"Not now" otherButtonTitles:@"Show my friends", nil];
+        
+        [alert show];
+  }
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) { // and they clicked OK.
+        NSLog(@"accepted initial alert");
+        [self contactsPermissions];
+    }else {
+        NSLog(@"rejected initial alert");
+        //show search with bottom table result as button that shows results from iphone contacts
+    }
+}
+
+- (void)contactsPermissions {
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusDenied ||
+        ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusRestricted){
+        UIAlertView *cantAddContactAlert = [[UIAlertView alloc] initWithTitle: @"Cannot Add Contact" message: @"You must give the app permission to add the contact first. Go to Settings -> Privacy -> Contacts -> change the switch on City" delegate:nil cancelButtonTitle: @"OK" otherButtonTitles: nil];
+        [cantAddContactAlert show];
+        NSLog(@"Denied");
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized){
+        NSLog(@"Authorized");
+        [self obtainContactList];
+        [self viewWillAppear:YES];
+    } else{ //ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined
+        NSLog(@"Not determined");
+        ABAddressBookRequestAccessWithCompletion(ABAddressBookCreateWithOptions(NULL, nil), ^(bool granted, CFErrorRef error) {
+            if (!granted){
+                NSLog(@"Just denied");
+                return;
+            } else {
+                NSLog(@"Just authorized");
+                [self obtainContactList];
+                [myTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+
+            }
+        });
+    }
+}
+
+# pragma mark - Populate Contacts
+
+- (void)obtainContactList {
+    CFErrorRef *error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+    ABRecordRef source = ABAddressBookCopyDefaultSource(addressBook);
+    NSArray *orderedContacts = (__bridge_transfer NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBook, source, kABPersonSortByFirstName);
+    if (orderedContacts.count > 0) {
+        for (int i = 0; i < [orderedContacts count]; i++) {
+            NSString *firstName = (__bridge NSString *)ABRecordCopyValue((__bridge ABRecordRef)[orderedContacts objectAtIndex:i], kABPersonFirstNameProperty);
+            NSString *lastName = (__bridge NSString *)ABRecordCopyValue((__bridge ABRecordRef)[orderedContacts objectAtIndex:i], kABPersonLastNameProperty);
+            ABMultiValueRef phoneNumbersPerPerson = ABRecordCopyValue((__bridge ABRecordRef)[orderedContacts objectAtIndex:i], kABPersonPhoneProperty);
+            
+            NSString *fullName = [self combineFirstName:firstName AndLastName:lastName];
+            
+            NSMutableArray *numbersToText = [[NSMutableArray alloc] init];
+            CFIndex phoneNumberCount = ABMultiValueGetCount(phoneNumbersPerPerson);
+            
+            if (phoneNumberCount > 0) {
+                for (CFIndex j = 0; j < phoneNumberCount; j++) {
+                    [numbersToText addObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(phoneNumbersPerPerson, j)];
+                }
+            }
+            //dictionary has full name pointing to array of phone numbers
+            NSDictionary *contactDict = [[NSDictionary alloc] initWithObjectsAndKeys:numbersToText, @"emails", fullName, @"name", nil];
+            [allContacts addObject:contactDict];
+        }
+    }
+}
+
+- (NSString *)combineFirstName:(NSString *)firstName AndLastName:(NSString *)lastName
+{
+    return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+}
 
 @end

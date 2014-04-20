@@ -158,6 +158,8 @@
 				7610E3D718F9D5190091F489 /* FPPopoverView.m */,
 				7610E3D818F9D5190091F489 /* FPTouchView.h */,
 				7610E3D918F9D5190091F489 /* FPTouchView.m */,
+				7654AF9018FDD8C900EF6659 /* CTSecondPopoverTableViewController.h */,
+				7654AF9118FDD8C900EF6659 /* CTSecondPopoverTableViewController.m */,
 			);
 			name = Popover;
 			sourceTree = "<group>";
@@ -285,8 +287,6 @@
 				767DAFAF18FB2C2E00565814 /* CTPopoverTableViewController.m */,
 				7639111718FD6326005B39F7 /* CTSecondViewController.h */,
 				7639111818FD6326005B39F7 /* CTSecondViewController.m */,
-				7654AF9018FDD8C900EF6659 /* CTSecondPopoverTableViewController.h */,
-				7654AF9118FDD8C900EF6659 /* CTSecondPopoverTableViewController.m */,
 				768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */,
 				768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */,
 			);

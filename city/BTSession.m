@@ -84,14 +84,14 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user setValue:@"McArthur Gill" forKey:@"name"];
         [user setValue:@"3343994374" forKey:@"phone"];
-        NSLog(@"created %@", user.name);
+   //     NSLog(@"created %@", user.name);
         
         User *user1 = [NSEntityDescription
                       insertNewObjectForEntityForName:@"User"
                       inManagedObjectContext:context];
         [user1 setValue:@"Suzie Hotcakes" forKey:@"name"];
         [user1 setValue:@"6144324790" forKey:@"phone"];
-        NSLog(@"created %@", user1.name);
+    //    NSLog(@"created %@", user1.name);
 
         
         User *user2 = [NSEntityDescription
@@ -99,7 +99,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user2 setValue:@"Will Schreiber" forKey:@"name"];
         [user2 setValue:@"2059360524" forKey:@"phone"];
-        NSLog(@"created %@", user2.name);
+    //    NSLog(@"created %@", user2.name);
 
         
         User *user3 = [NSEntityDescription
@@ -107,7 +107,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user3 setValue:@"Reed Whitcraft" forKey:@"name"];
         [user3 setValue:@"6463225988" forKey:@"phone"];
-        NSLog(@"created %@", user3.name);
+     //   NSLog(@"created %@", user3.name);
 
         
         User *user4 = [NSEntityDescription
@@ -115,7 +115,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user4 setValue:@"Sarah Betack" forKey:@"name"];
         [user4 setValue:@"2038033319" forKey:@"phone"];
-        NSLog(@"created %@", user4.name);
+//      NSLog(@"created %@", user4.name);
 
         
         User *user5 = [NSEntityDescription
@@ -123,7 +123,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user5 setValue:@"Sam Gray" forKey:@"name"];
         [user5 setValue:@"2055401018" forKey:@"phone"];
-        NSLog(@"created %@", user5.name);
+  //      NSLog(@"created %@", user5.name);
 
         
         User *user6 = [NSEntityDescription
@@ -131,7 +131,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user6 setValue:@"Andrew Kuykendall" forKey:@"name"];
         [user6 setValue:@"3528431711" forKey:@"phone"];
-        NSLog(@"created %@", user6.name);
+  //      NSLog(@"created %@", user6.name);
 
         
         User *user7 = [NSEntityDescription
@@ -139,7 +139,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user7 setValue:@"George Harwood" forKey:@"name"];
         [user7 setValue:@"3345469168" forKey:@"phone"];
-        NSLog(@"created %@", user7.name);
+   //     NSLog(@"created %@", user7.name);
 
         
         User *user8 = [NSEntityDescription
@@ -147,7 +147,7 @@ static BTSession* thisSession = nil;
                       inManagedObjectContext:context];
         [user8 setValue:@"Pierce Cobb" forKey:@"name"];
         [user8 setValue:@"3343011335" forKey:@"phone"];
-        NSLog(@"created %@", user8.name);
+   //     NSLog(@"created %@", user8.name);
 
         
         //nashville
@@ -159,7 +159,7 @@ static BTSession* thisSession = nil;
         [nash setValue:longitude forKey:@"longitude"];
         [nash setValue:latitude forKey:@"latitude"];
         [nash setValue:@"Nashville" forKeyPath:@"cityName"];
-        NSLog(@"created %@", nash.cityName);
+ //       NSLog(@"created %@", nash.cityName);
 
         
         //montgomery
@@ -171,7 +171,7 @@ static BTSession* thisSession = nil;
         [gump setValue:gumplong forKey:@"longitude"];
         [gump setValue:gumplat forKey:@"latitude"];
         [gump setValue:@"Montgomery" forKeyPath:@"cityName"];
-        NSLog(@"created %@", gump.cityName);
+  //      NSLog(@"created %@", gump.cityName);
 
         
         //Cinci
@@ -183,7 +183,7 @@ static BTSession* thisSession = nil;
         [cinci setValue:sflong forKey:@"longitude"];
         [cinci setValue:sflat forKey:@"latitude"];
         [cinci setValue:@"Cincinnati" forKeyPath:@"cityName"];
-        NSLog(@"created %@", cinci.cityName);
+   //     NSLog(@"created %@", cinci.cityName);
         
         
         [nash addUsersObject:user];
@@ -209,7 +209,7 @@ static BTSession* thisSession = nil;
                           insertNewObjectForEntityForName:@"VenueType"
                           inManagedObjectContext:context];
         [restaurant setValue:@"Restaurant" forKey:@"typeName"];
-        NSLog(@"created venuetypes");
+  //      NSLog(@"created venuetypes");
         
         
         //Venues
@@ -218,9 +218,8 @@ static BTSession* thisSession = nil;
                           inManagedObjectContext:context];
         [winners setValue:@"Winners" forKey:@"venueName"];
         [winners setVenueType:bar];
-        NSLog(@"got here");
         [nash addVenuesObject:winners];
-        NSLog(@"but not here");
+
         Venue *rebar = [NSEntityDescription
                           insertNewObjectForEntityForName:@"Venue"
                           inManagedObjectContext:context];
@@ -286,9 +285,6 @@ static BTSession* thisSession = nil;
         if ([person.name isEqualToString:@"McArthur Gill"]) {
             [self loginUser:person];
         }
-        NSLog(@"Name: %@", person.name);
-        NSLog(@"Phone: %@", person.phone);
-        NSLog(@"user => city: %@", [person.city cityName]);
     }
     
     NSLog(@"loggedInUser : %@", [[self loggedInUser] name]);

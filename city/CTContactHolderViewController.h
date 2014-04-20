@@ -10,7 +10,7 @@
 #import "User.h"
 #import "BTSession.h"
 
-@interface CTContactHolderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface CTContactHolderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *addContactButton;
 @property (strong, nonatomic) IBOutlet UIButton *addedMeButton;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
@@ -19,6 +19,7 @@
 - (IBAction)addedMe:(id)sender;
 - (IBAction)search:(id)sender;
 
+@property (strong, nonatomic) NSMutableArray *allContacts; 
 @property (strong, nonatomic) NSMutableArray* selectedContacts;
 @property (strong, nonatomic) NSString *selectedButton;
 @property (strong, nonatomic) IBOutlet UITableView *myTable;

@@ -14,6 +14,7 @@
 
 @dynamic phone;
 @dynamic name;
+@dynamic notificationsOn; 
 @dynamic city;
 @dynamic city_id;
 

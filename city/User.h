@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * city_id;
+@property (nonatomic, assign) BOOL * notificationsOn;
 @property (nonatomic, retain) City *city;
 
 -(NSString *)currentCity;
