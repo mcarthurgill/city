@@ -70,6 +70,7 @@
     [self.tabBarController.navigationController setNavigationBarHidden:NO];
     [selectedContacts removeAllObjects];
     [self hideButtonAtBottom];
+    [self resetSearchInformation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,18 +115,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"number of sections in tableView");
+    NSLog(@"begin number of sections in tableView");
     if ([selectedButton isEqualToString:@"inviteButton"]) {
         return 1;
     }
     if ([selectedButton isEqualToString:@"friendsOnApp"] && [searchResults count] > 0) {
         return searchResults.count;
     }
+    NSLog(@"end number of sections in tableView");
+
     return friendsOnApp.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"begin number rows in section");
     if ([[self selectedButton] isEqualToString:@"inviteButton"]) {
         if ([searchResults count] > 0) {
             return searchResults.count;
@@ -136,11 +140,14 @@
             return [[[searchResults objectAtIndex:section] valueForKey:@"users"] count];
         }
     }
+        NSLog(@"end number rows in section");
     return [[[friendsOnApp objectAtIndex:section] valueForKey:@"users"] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"begin cell for row at indexpath");
+
     NSString *CellIdentifier = @"contactCell";
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
@@ -156,6 +163,7 @@
 
     if ([selectedButton isEqualToString:@"inviteButton"]) {
         if ([searchResults count] > 0) {
+            NSLog(@"search results count > 0");
             [contact setText:[[searchResults objectAtIndex:indexPath.row] valueForKey:@"name"]];
         } else {
             [contact setText:[[allContacts objectAtIndex:indexPath.row] valueForKey:@"name"]];
@@ -168,11 +176,12 @@
             [contact setText:[[[[friendsOnApp objectAtIndex:indexPath.section] valueForKey:@"users"] objectAtIndex:indexPath.row] name]];
         }
     }
-    
+    NSLog(@"end cell for row at indexpath");
     return cell;
 }
          
  - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+         NSLog(@"begin title for header in section");
      if ([[self selectedButton] isEqualToString:@"friendsOnApp"]) {
          if ([searchResults count] > 0) {
              return [[searchResults objectAtIndex:section] valueForKey:@"city"];
@@ -180,22 +189,32 @@
              return [[friendsOnApp objectAtIndex:section] valueForKey:@"city"];
          }
      }
+         NSLog(@"end title for header in section");
      return @"Invite More Friends";
  }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+        NSLog(@"begin selectrowatindexpath");
     NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
+    if (searchResults.count > 0) {
+        contact = [searchResults objectAtIndex:indexPath.row];
+    }
     if ([selectedButton isEqualToString:@"inviteButton"]) {
-        [self shouldShowButtonView];
         if (![selectedContacts containsObject:contact]) {
             [selectedContacts addObject:contact];
+            [self shouldShowButtonView];
             [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
         }
     }
+            NSLog(@"end selectrowatindexpath");
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+            NSLog(@"begin deselectrowatindexpath");
     NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
+    if (searchResults.count > 0) {
+        contact = [searchResults objectAtIndex:indexPath.row];
+    }
     if ([selectedContacts containsObject:contact]) {
         [selectedContacts removeObject:contact];
         [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
@@ -203,20 +222,29 @@
             [self hideButtonAtBottom];
         }
     }
+            NSLog(@"end selectrowatindexpath");
 }
 
 - (void) setCheckMarkImageForCell:(UITableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"begin setcheckmark");
     if ([[self selectedButton] isEqualToString:@"inviteButton"]) {
         UIImageView* cellCheckmark = (UIImageView*) [cell.contentView viewWithTag:2];
         
         NSString *imageName = @"unchecked.png";
-        if ([selectedContacts containsObject:[allContacts objectAtIndex:indexPath.row]]) {
+        if (searchResults.count > 0 && [selectedContacts containsObject:[searchResults objectAtIndex:indexPath.row]]) {
+            NSLog(@"****setting because of searchResults %ld", (long)indexPath.row);
+            imageName = @"checked.png";
+        } else if (allContacts.count > 0 && [selectedContacts containsObject:[allContacts objectAtIndex:indexPath.row]]) {
+                        NSLog(@"****setting because of allcontacts");
             imageName = @"checked.png";
         }
+        NSLog(@"searchResults : %@", searchResults);
+        NSLog(@"selectedContacts : %@", selectedContacts);
         
         UIImage* image = [UIImage imageNamed:imageName];
         [cellCheckmark setImage:image];
     }
+    NSLog(@"*****ending setcheckmarkforcell");
 }
 
 # pragma mark - permissions
@@ -311,6 +339,7 @@
 
 - (IBAction)friendsOnAppAction:(id)sender {
     self.selectedButton = @"friendsOnApp";
+    [self resetSearchInformation];
     [sender setSelected:YES];
     [inviteButton setSelected:NO];
     [self hideButtonAtBottom];
@@ -319,6 +348,7 @@
 }
 
 - (IBAction)invite:(id)sender {
+    [self resetSearchInformation];
     self.selectedButton = @"inviteButton";
     [sender setSelected:YES];
     [friendsOnAppButton setSelected:NO]; 
@@ -326,6 +356,7 @@
 }
 
 - (IBAction)sendInvitationsAction:(id)sender {
+    [self resetSearchInformation];
     NSLog(@"send invites to : %@", selectedContacts);
 }
 
@@ -347,7 +378,7 @@
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    if ([selectedButton isEqualToString:@"inviteButton"]) {
+    if ([selectedButton isEqualToString:@"inviteButton"] && searchText.length > 0) {
         NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
         searchResults = [[allContacts filteredArrayUsingPredicate:resultPredicate] mutableCopy];
     } else {
@@ -382,6 +413,11 @@
 - (NSArray *) filterUsers:(NSMutableArray *)users ByCity:(NSString *)cityName{
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"currentCity = %@", cityName];
     return [users filteredArrayUsingPredicate:resultPredicate];
+}
+
+- (void)resetSearchInformation {
+    searchBar.text= @"";
+    [searchResults removeAllObjects];
 }
 
 @end
