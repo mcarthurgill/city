@@ -129,6 +129,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="SQh-Gt-auX">
+                                <rect key="frame" x="0.0" y="449" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xhh-YJ-TVZ">
+                                        <rect key="frame" x="20" y="8" width="280" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.28284070719999999" green="0.69893408509999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Send Invitations">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendInvitationsAction:" destination="A05-a4-1JC" eventType="touchUpInside" id="gOR-jH-EM9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pvl-dz-JFh">
                                 <rect key="frame" x="-71" y="56" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,45 +154,34 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WQ5-oj-N7O">
-                                <rect key="frame" x="20" y="29" width="83" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.31890122264018173" green="0.93463465240916899" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Contacts">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addContact:" destination="A05-a4-1JC" eventType="touchUpInside" id="Jqi-JP-2nh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TMc-dl-72c">
-                                <rect key="frame" x="119" y="29" width="83" height="57"/>
+                                <rect key="frame" x="20" y="29" width="135" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.31890122259999998" green="0.93463465239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Added Me">
+                                <state key="normal" title="Friends On City">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addedMe:" destination="A05-a4-1JC" eventType="touchUpInside" id="Sac-6G-PDU"/>
+                                    <action selector="friendsOnAppAction:" destination="A05-a4-1JC" eventType="touchUpInside" id="K4r-9n-F0V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YhN-HM-SoN">
-                                <rect key="frame" x="218" y="29" width="82" height="57"/>
+                                <rect key="frame" x="163" y="29" width="135" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.31890122259999998" green="0.93463465239999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Search">
+                                <state key="normal" title="Invite Friends">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="search:" destination="A05-a4-1JC" eventType="touchUpInside" id="SaN-VD-Ugs"/>
+                                    <action selector="invite:" destination="A05-a4-1JC" eventType="touchUpInside" id="to9-gf-3An"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n52-Nv-AWO">
-                                <rect key="frame" x="0.0" y="94" width="320" height="474"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="427"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="pVZ-3d-9jL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="pVZ-3d-9jL">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVZ-3d-9jL" id="pCr-Pt-zec">
@@ -195,6 +202,23 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendCell" id="ZYf-0j-d6c">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZYf-0j-d6c" id="ryI-Nf-kbW">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qjc-S7-irc">
+                                                    <rect key="frame" x="20" y="11" width="280" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="A05-a4-1JC" id="U1X-rG-VlI"/>
@@ -206,10 +230,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="piC-OH-2zX"/>
                     <connections>
-                        <outlet property="addContactButton" destination="WQ5-oj-N7O" id="d9k-CY-bpK"/>
-                        <outlet property="addedMeButton" destination="TMc-dl-72c" id="SCa-RW-WZe"/>
+                        <outlet property="buttonView" destination="SQh-Gt-auX" id="a5S-Gb-gnu"/>
+                        <outlet property="friendsOnAppButton" destination="TMc-dl-72c" id="5A1-ax-FBk"/>
+                        <outlet property="inviteButton" destination="YhN-HM-SoN" id="EEr-k9-Tng"/>
                         <outlet property="myTable" destination="n52-Nv-AWO" id="x4p-2X-LMX"/>
-                        <outlet property="searchButton" destination="YhN-HM-SoN" id="w4a-DR-Gp3"/>
+                        <outlet property="sendInvitationsButton" destination="Xhh-YJ-TVZ" id="kpX-9J-2F5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDy-0J-Kny" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -174,7 +174,7 @@
 
 -(void)changeUserCurrentCity:(City *)city {
     [[thisSession loggedInUser] setCity:city];
-    thisSession.friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
+    thisSession.friendsInCity = [[thisSession loggedInUser] friendsInMyCurrentCity];
     [thisSession.friendsToChat removeAllObjects];
     [thisSession setupVenueData:city];
     [self setupNavigationBar];

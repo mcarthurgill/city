@@ -19,11 +19,13 @@
 @synthesize myTable;
 @synthesize selectedContacts;
 @synthesize selectedButton;
-@synthesize searchButton;
-@synthesize addContactButton;
-@synthesize addedMeButton;
+@synthesize friendsOnApp;
+@synthesize friendsOnAppButton;
+@synthesize inviteButton;
 @synthesize thisSession;
 @synthesize allContacts;
+@synthesize buttonView;
+@synthesize sendInvitationsButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,21 +41,32 @@
     [super viewDidLoad];
 
     thisSession = [BTSession thisSession];
-    self.selectedButton = @"addContacts";
 
     allContacts = [[NSMutableArray alloc] init];
     selectedContacts = [[NSMutableArray alloc] init];
+    friendsOnApp = [[thisSession loggedInUser] friendsOnApp];
+    [buttonView addSubview:sendInvitationsButton];
+    
+    CTAppDelegate* appDelegate = (CTAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate.window addSubview:buttonView];
+    [buttonView setHidden:YES];
+    
     [self prePermission];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.selectedButton = @"friendsOnApp";
     [self.tabBarController.navigationController setNavigationBarHidden:YES];
+    [self shouldShowButtonView];
+    [myTable reloadData];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.tabBarController.navigationController setNavigationBarHidden:NO];
+    [selectedContacts removeAllObjects];
+    [self hideButtonAtBottom];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,21 +74,37 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)addContact:(id)sender {
-    self.selectedButton = @"addContacts";
-    [[self myTable] reloadData];
+
+# pragma mark - Button View
+
+- (void) shouldShowButtonView
+{
+    if (selectedContacts.count > 0 && [buttonView isHidden]) {
+        [self showButtonAtBottom];
+    } else {
+        [self shouldHideButtonView];
+    }
 }
 
-- (IBAction)addedMe:(id)sender {
-    self.selectedButton = @"addedMe";
-    [[self myTable] reloadData];
+- (void) shouldHideButtonView
+{
+    if (selectedContacts.count == 0 && ![buttonView isHidden]) {
+        [self hideButtonAtBottom];
+    }
 }
 
-- (IBAction)search:(id)sender {
-    self.selectedButton = @"search";
-    [[self myTable] reloadData];
+- (void) showButtonAtBottom
+{
+    [buttonView setHidden:NO];
+    [myTable setContentInset:UIEdgeInsetsMake(myTable.contentInset.top, 0, buttonView.frame.size.height, 0)];
+    [myTable scrollToRowAtIndexPath:myTable.indexPathsForSelectedRows.lastObject atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+- (void) hideButtonAtBottom
+{
+    [buttonView setHidden:YES];
+    [myTable setContentInset:UIEdgeInsetsMake(myTable.contentInset.top, 0, self.navigationController.toolbar.frame.size.height, 0)];
+}
 
 
 #pragma mark - Table view data source
@@ -83,33 +112,50 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSLog(@"number of sections in tableView");
-    return 1;
+    if ([selectedButton isEqualToString:@"inviteButton"]) {
+        return 1;
+    }
+    return friendsOnApp.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"need to replace these values with contacts who have added them etc.");
-    if ([[self selectedButton] isEqualToString:@"addContacts"]) {
-        return allContacts.count;
-    }else if ([[self selectedButton] isEqualToString:@"addedMe"]) {
+    if ([[self selectedButton] isEqualToString:@"inviteButton"]) {
         return allContacts.count;
     }
-    return thisSession.friendsInCity.count;
+    return [[[friendsOnApp objectAtIndex:section] valueForKey:@"users"] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"contactCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSString *CellIdentifier = @"contactCell";
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
+    if ([selectedButton isEqualToString:@"friendsOnApp"]) {
+        CellIdentifier = @"friendCell";
+    }
+
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
     
     UILabel* contact = (UILabel*) [cell.contentView viewWithTag:1];
     
-    [self setCheckMarkImageForCell:cell AtIndexPath:indexPath];
-
-    [contact setText:[[allContacts objectAtIndex:indexPath.row] valueForKey:@"name"]];
+    if ([selectedButton isEqualToString:@"inviteButton"]) {
+        [self setCheckMarkImageForCell:cell AtIndexPath:indexPath];
+        [contact setText:[[allContacts objectAtIndex:indexPath.row] valueForKey:@"name"]];
+    } else if ([selectedButton isEqualToString:@"friendsOnApp"]) {
+        [contact setText:[[[[friendsOnApp objectAtIndex:indexPath.section] valueForKey:@"users"] objectAtIndex:indexPath.row] name]];
+    }
     
     return cell;
 }
+         
+ - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+     if ([[self selectedButton] isEqualToString:@"friendsOnApp"]) {
+         return [[friendsOnApp objectAtIndex:section] valueForKey:@"city"];
+     }
+     return @"Invite More Friends";
+ }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
@@ -117,44 +163,48 @@
         [selectedContacts addObject:contact];
         [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
     }
+    if ([selectedButton isEqualToString:@"inviteButton"]) {
+        [self shouldShowButtonView];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
     if ([selectedContacts containsObject:contact]) {
         [selectedContacts removeObject:contact];
-         [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
+        [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
+        if (selectedContacts.count == 0) {
+            [self hideButtonAtBottom];
+        }
     }
-  }
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([[self selectedButton] isEqualToString:@"addContacts"]) {
-        return @"Add friends already on City";
-    }else if ([[self selectedButton] isEqualToString:@"addedMe"]) {
-        return @"My Friends on City";
-    }
-    return @"this should be a search bar...";
 }
 
 - (void) setCheckMarkImageForCell:(UITableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath {
-    UIImageView* cellCheckmark = (UIImageView*) [cell.contentView viewWithTag:2];
-    
-    NSString *imageName = @"unchecked.png";
-    if ([selectedContacts containsObject:[allContacts objectAtIndex:indexPath.row]]) {
-        imageName = @"checked.png";
+    if ([[self selectedButton] isEqualToString:@"inviteButton"]) {
+        UIImageView* cellCheckmark = (UIImageView*) [cell.contentView viewWithTag:2];
+        
+        NSString *imageName = @"unchecked.png";
+        if ([selectedContacts containsObject:[allContacts objectAtIndex:indexPath.row]]) {
+            imageName = @"checked.png";
+        }
+        
+        UIImage* image = [UIImage imageNamed:imageName];
+        [cellCheckmark setImage:image];
     }
-    
-    UIImage* image = [UIImage imageNamed:imageName];
-    [cellCheckmark setImage:image];
 }
 
 # pragma mark - permissions
 
 - (void)prePermission {
+    if (ABAddressBookGetAuthorizationStatus() != kABAuthorizationStatusAuthorized) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Find your friends" message:@"In order to find your friends who have City, we need permission to load your contacts" delegate:self cancelButtonTitle:@"Not now" otherButtonTitles:@"Show my friends", nil];
         
         [alert show];
-  }
+    } else {
+        [self obtainContactList];
+        [myTable reloadData]; 
+    }
+}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) { // and they clicked OK.
@@ -175,7 +225,7 @@
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized){
         NSLog(@"Authorized");
         [self obtainContactList];
-        [self viewWillAppear:YES];
+        [myTable reloadData];
     } else{ //ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined
         NSLog(@"Not determined");
         ABAddressBookRequestAccessWithCompletion(ABAddressBookCreateWithOptions(NULL, nil), ^(bool granted, CFErrorRef error) {
@@ -186,7 +236,6 @@
                 NSLog(@"Just authorized");
                 [self obtainContactList];
                 [myTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-
             }
         });
     }
@@ -214,17 +263,39 @@
                 for (CFIndex j = 0; j < phoneNumberCount; j++) {
                     [numbersToText addObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(phoneNumbersPerPerson, j)];
                 }
+                //dictionary has full name pointing to array of phone numbers
+                NSDictionary *contactDict = [[NSDictionary alloc] initWithObjectsAndKeys:numbersToText, @"phone", fullName, @"name", nil];
+                [allContacts addObject:contactDict];
             }
-            //dictionary has full name pointing to array of phone numbers
-            NSDictionary *contactDict = [[NSDictionary alloc] initWithObjectsAndKeys:numbersToText, @"emails", fullName, @"name", nil];
-            [allContacts addObject:contactDict];
         }
     }
 }
 
 - (NSString *)combineFirstName:(NSString *)firstName AndLastName:(NSString *)lastName
 {
-    return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    if (firstName.length > 0 && lastName.length > 0) {
+        return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    } else if (firstName.length == 0 && lastName.length > 0) {
+        return lastName;
+    }
+    return firstName;
 }
 
+# pragma mark - Button Actions
+
+- (IBAction)friendsOnAppAction:(id)sender {
+    self.selectedButton = @"friendsOnApp";
+    [self hideButtonAtBottom];
+    [selectedContacts removeAllObjects];
+    [[self myTable] reloadData];
+}
+
+- (IBAction)invite:(id)sender {
+    self.selectedButton = @"inviteButton";
+    [[self myTable] reloadData];
+}
+
+- (IBAction)sendInvitationsAction:(id)sender {
+    NSLog(@"send invites to : %@", selectedContacts);
+}
 @end

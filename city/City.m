@@ -29,10 +29,7 @@
                                    entityForName:@"City" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    NSMutableArray *cities = [[NSMutableArray alloc] init];
-    for (NSManagedObject *city in fetchedObjects) {
-        [cities addObject:city];
-    }
+    NSMutableArray *cities = [fetchedObjects mutableCopy]; 
     return cities;
 }
 

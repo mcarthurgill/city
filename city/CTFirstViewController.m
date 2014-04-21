@@ -37,7 +37,7 @@
     tableview.delegate = self;
     tableview.dataSource = self;
     thisSession = [BTSession thisSession];
-    thisSession.friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
+    thisSession.friendsInCity = [[thisSession loggedInUser] friendsInMyCurrentCity];
     thisSession.friendsToChat = [[NSMutableArray alloc] init];
     [buttonView addSubview:startChatButton];
     CTAppDelegate* appDelegate = (CTAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -57,10 +57,6 @@
 {
     [super viewWillDisappear:animated];
     [self hideButtonAtBottom];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -190,7 +186,7 @@
 
 -(void)changeUserCurrentCity:(City *)city {
     [[thisSession loggedInUser] setCity:city];
-    thisSession.friendsInCity = [[thisSession loggedInUser] friendsInCurrentCity];
+    thisSession.friendsInCity = [[thisSession loggedInUser] friendsInMyCurrentCity];
     [thisSession.friendsToChat removeAllObjects];
     [thisSession setupVenueData:city];
     [self setupNavigationBar];

@@ -21,6 +21,8 @@
 
 -(NSString *)currentCity;
 
--(NSMutableArray *)friendsInCurrentCity;
+-(NSMutableArray *)friendsOnApp;
+-(NSMutableArray *)arrayOfUsersOnApp;
+-(NSMutableArray *)friendsInMyCurrentCity; 
 
 @end
