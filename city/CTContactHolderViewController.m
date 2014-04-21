@@ -285,6 +285,8 @@
 
 - (IBAction)friendsOnAppAction:(id)sender {
     self.selectedButton = @"friendsOnApp";
+    [sender setSelected:YES];
+    [inviteButton setSelected:NO];
     [self hideButtonAtBottom];
     [selectedContacts removeAllObjects];
     [[self myTable] reloadData];
@@ -292,6 +294,8 @@
 
 - (IBAction)invite:(id)sender {
     self.selectedButton = @"inviteButton";
+    [sender setSelected:YES];
+    [friendsOnAppButton setSelected:NO]; 
     [[self myTable] reloadData];
 }
 
