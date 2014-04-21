@@ -26,6 +26,8 @@
 @synthesize allContacts;
 @synthesize buttonView;
 @synthesize sendInvitationsButton;
+@synthesize searchBar;
+@synthesize searchResults;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +48,7 @@
     selectedContacts = [[NSMutableArray alloc] init];
     friendsOnApp = [[thisSession loggedInUser] friendsOnApp];
     [buttonView addSubview:sendInvitationsButton];
+    searchBar.delegate = self;
     
     CTAppDelegate* appDelegate = (CTAppDelegate*)[[UIApplication sharedApplication] delegate];
     [appDelegate.window addSubview:buttonView];
@@ -115,13 +118,23 @@
     if ([selectedButton isEqualToString:@"inviteButton"]) {
         return 1;
     }
+    if ([selectedButton isEqualToString:@"friendsOnApp"] && [searchResults count] > 0) {
+        return searchResults.count;
+    }
     return friendsOnApp.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([[self selectedButton] isEqualToString:@"inviteButton"]) {
+        if ([searchResults count] > 0) {
+            return searchResults.count;
+        }
         return allContacts.count;
+    }else {
+        if ([searchResults count] > 0) {
+            return [[[searchResults objectAtIndex:section] valueForKey:@"users"] count];
+        }
     }
     return [[[friendsOnApp objectAtIndex:section] valueForKey:@"users"] count];
 }
@@ -140,11 +153,20 @@
     
     UILabel* contact = (UILabel*) [cell.contentView viewWithTag:1];
     
+
     if ([selectedButton isEqualToString:@"inviteButton"]) {
+        if ([searchResults count] > 0) {
+            [contact setText:[[searchResults objectAtIndex:indexPath.row] valueForKey:@"name"]];
+        } else {
+            [contact setText:[[allContacts objectAtIndex:indexPath.row] valueForKey:@"name"]];
+        }
         [self setCheckMarkImageForCell:cell AtIndexPath:indexPath];
-        [contact setText:[[allContacts objectAtIndex:indexPath.row] valueForKey:@"name"]];
     } else if ([selectedButton isEqualToString:@"friendsOnApp"]) {
-        [contact setText:[[[[friendsOnApp objectAtIndex:indexPath.section] valueForKey:@"users"] objectAtIndex:indexPath.row] name]];
+        if ([searchResults count] > 0) {
+            [contact setText:[[[[searchResults objectAtIndex:indexPath.section] valueForKey:@"users"] objectAtIndex:indexPath.row] name]];
+        }else {
+            [contact setText:[[[[friendsOnApp objectAtIndex:indexPath.section] valueForKey:@"users"] objectAtIndex:indexPath.row] name]];
+        }
     }
     
     return cell;
@@ -152,19 +174,23 @@
          
  - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
      if ([[self selectedButton] isEqualToString:@"friendsOnApp"]) {
-         return [[friendsOnApp objectAtIndex:section] valueForKey:@"city"];
+         if ([searchResults count] > 0) {
+             return [[searchResults objectAtIndex:section] valueForKey:@"city"];
+         } else {
+             return [[friendsOnApp objectAtIndex:section] valueForKey:@"city"];
+         }
      }
      return @"Invite More Friends";
  }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *contact = [allContacts objectAtIndex:indexPath.row];
-    if (![selectedContacts containsObject:contact]) {
-        [selectedContacts addObject:contact];
-        [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
-    }
     if ([selectedButton isEqualToString:@"inviteButton"]) {
         [self shouldShowButtonView];
+        if (![selectedContacts containsObject:contact]) {
+            [selectedContacts addObject:contact];
+            [self setCheckMarkImageForCell:[tableView cellForRowAtIndexPath:indexPath] AtIndexPath:indexPath];
+        }
     }
 }
 
@@ -302,4 +328,60 @@
 - (IBAction)sendInvitationsAction:(id)sender {
     NSLog(@"send invites to : %@", selectedContacts);
 }
+
+
+# pragma mark - Search Bar
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    searchText = [searchText lowercaseString];
+    [self filterContentForSearchText:searchText scope:nil];
+    [myTable reloadData];
+    NSLog(@"%@", searchText);
+    
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    if ([selectedButton isEqualToString:@"inviteButton"]) {
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+        searchResults = [[allContacts filteredArrayUsingPredicate:resultPredicate] mutableCopy];
+    } else {
+        NSMutableArray *users = [User arrayOfUsersOnApp];
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[c] %@", searchText];
+        [users filterUsingPredicate:resultPredicate];
+        searchResults = [self createHashForUsers:users];
+    }
+    NSLog(@"searchresults: %@", searchResults);
+}
+
+- (NSMutableArray *)createHashForUsers:(NSMutableArray *)users {
+    NSMutableArray *citiesArr = [[NSMutableArray alloc] init];
+    NSMutableArray *usersArr = [[NSMutableArray alloc] init];
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    
+    for (User *user in users) {
+        [citiesArr addObject:user.city.cityName];
+        [usersArr addObject:user.name];
+    }
+    
+    NSMutableArray *noDuplicates = [[[NSSet setWithArray: citiesArr] allObjects] mutableCopy];
+    
+    for (NSString *name in noDuplicates) {
+        NSArray *arrayOfUsers = [self filterUsers:users ByCity:name];
+        NSDictionary *tmp = [[NSDictionary alloc] initWithObjectsAndKeys:name, @"city", arrayOfUsers, @"users", nil];
+        [returnArray addObject:tmp];
+    }
+    return returnArray;
+}
+
+- (NSArray *) filterUsers:(NSMutableArray *)users ByCity:(NSString *)cityName{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"currentCity = %@", cityName];
+    return [users filteredArrayUsingPredicate:resultPredicate];
+}
+
 @end

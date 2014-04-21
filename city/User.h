@@ -22,7 +22,7 @@
 -(NSString *)currentCity;
 
 -(NSMutableArray *)friendsOnApp;
--(NSMutableArray *)arrayOfUsersOnApp;
++(NSMutableArray *)arrayOfUsersOnApp;
 -(NSMutableArray *)friendsInMyCurrentCity; 
 
 @end

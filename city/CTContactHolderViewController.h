@@ -11,10 +11,13 @@
 #import "BTSession.h"
 #import "CTAppDelegate.h"
 
-@interface CTContactHolderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface CTContactHolderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *friendsOnAppButton;
 @property (strong, nonatomic) IBOutlet UIButton *inviteButton;
 @property (strong, nonatomic) IBOutlet UIButton *sendInvitationsButton;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) NSMutableArray *searchResults; 
 
 - (IBAction)friendsOnAppAction:(id)sender;
 - (IBAction)invite:(id)sender;
@@ -24,9 +27,9 @@
 @property (strong, nonatomic) NSMutableArray *friendsOnApp;
 @property (strong, nonatomic) NSMutableArray* selectedContacts;
 @property (strong, nonatomic) NSString *selectedButton;
-@property (strong, nonatomic) IBOutlet UITableView *myTable;
-@property (strong, nonatomic) BTSession *thisSession;
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 
+@property (strong, nonatomic) IBOutlet UITableView *myTable;
+@property (strong, nonatomic) BTSession *thisSession;
 
 @end

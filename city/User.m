@@ -46,7 +46,7 @@
     return array;
 }
 
--(NSMutableArray *)arrayOfUsersOnApp {
++(NSMutableArray *)arrayOfUsersOnApp {
     CTAppDelegate *appDelegate = (CTAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
