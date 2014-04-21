@@ -121,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="928" y="-37"/>
         </scene>
-        <!--Contact Holder View Controller - Item-->
+        <!--Contact Holder View Controller - Invite Friends-->
         <scene sceneID="NdT-Hb-qFP">
             <objects>
                 <viewController id="A05-a4-1JC" customClass="CTContactHolderViewController" sceneMemberID="viewController">
@@ -177,7 +177,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n52-Nv-AWO">
-                                <rect key="frame" x="0.0" y="94" width="320" height="427"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="423"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -228,7 +228,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="piC-OH-2zX"/>
+                    <tabBarItem key="tabBarItem" title="Invite Friends" image="second" id="piC-OH-2zX"/>
                     <connections>
                         <outlet property="buttonView" destination="SQh-Gt-auX" id="a5S-Gb-gnu"/>
                         <outlet property="friendsOnAppButton" destination="TMc-dl-72c" id="5A1-ax-FBk"/>
@@ -334,6 +334,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

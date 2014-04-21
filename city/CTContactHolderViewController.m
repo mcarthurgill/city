@@ -56,7 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.selectedButton = @"friendsOnApp";
+    [friendsOnAppButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     [self.tabBarController.navigationController setNavigationBarHidden:YES];
     [self shouldShowButtonView];
     [myTable reloadData];
@@ -103,7 +103,7 @@
 - (void) hideButtonAtBottom
 {
     [buttonView setHidden:YES];
-    [myTable setContentInset:UIEdgeInsetsMake(myTable.contentInset.top, 0, self.navigationController.toolbar.frame.size.height, 0)];
+    [myTable setContentInset:UIEdgeInsetsMake(myTable.contentInset.top, 0, 0, 0)];
 }
 
 
@@ -259,7 +259,7 @@
             NSMutableArray *numbersToText = [[NSMutableArray alloc] init];
             CFIndex phoneNumberCount = ABMultiValueGetCount(phoneNumbersPerPerson);
             
-            if (phoneNumberCount > 0) {
+            if (phoneNumberCount > 0 && fullName.length > 0) {
                 for (CFIndex j = 0; j < phoneNumberCount; j++) {
                     [numbersToText addObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(phoneNumbersPerPerson, j)];
                 }
