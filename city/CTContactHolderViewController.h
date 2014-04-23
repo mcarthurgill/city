@@ -17,7 +17,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *sendInvitationsButton;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (strong, nonatomic) NSMutableArray *searchResults; 
+@property (strong, nonatomic) NSMutableArray *searchResults;
+@property (strong, nonatomic) NSMutableDictionary *contactsByLetter;
 
 - (IBAction)friendsOnAppAction:(id)sender;
 - (IBAction)invite:(id)sender;
