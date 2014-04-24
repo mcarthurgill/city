@@ -7,6 +7,7 @@
 //
 
 #import "CTMapViewController.h"
+#import "CTDetailVenueViewController.h"
 
 @interface CTMapViewController ()
 
@@ -243,5 +244,28 @@
     [searchResults removeAllObjects];
     [self.mapView addAnnotations:[self createAnnotationsFromArray:nearbyResults]];
     [tableview reloadData];
+}
+
+
+
+# pragma mark - segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showVenue"])
+    {
+        CTDetailVenueViewController *detailViewController =
+        [segue destinationViewController];
+        
+        NSIndexPath *myIndexPath = [tableview
+                                    indexPathForSelectedRow];
+        
+        if ([self searchActivated]) {
+            detailViewController.venue = [searchResults objectAtIndex:myIndexPath.row];
+        } else {
+            detailViewController.venue = [nearbyResults objectAtIndex:myIndexPath.row];
+            NSLog(@"GOT HERE");
+        }
+    }
 }
 @end

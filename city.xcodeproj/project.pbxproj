@@ -48,6 +48,7 @@
 		76E389AF190965BC00475B1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E389AE190965BC00475B1E /* MapKit.framework */; };
 		76E389B1190965C200475B1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E389B0190965C200475B1E /* CoreLocation.framework */; };
 		76E389B419099DEF00475B1E /* CTMapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E389B319099DEF00475B1E /* CTMapViewAnnotation.m */; };
+		76E389B71909B48700475B1E /* CTDetailVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E389B61909B48700475B1E /* CTDetailVenueViewController.m */; };
 		76EAA12D18F35174009CE526 /* CTLoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EAA12C18F35174009CE526 /* CTLoginNavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,8 @@
 		76E389B0190965C200475B1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		76E389B219099DEF00475B1E /* CTMapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMapViewAnnotation.h; sourceTree = "<group>"; };
 		76E389B319099DEF00475B1E /* CTMapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMapViewAnnotation.m; sourceTree = "<group>"; };
+		76E389B51909B48700475B1E /* CTDetailVenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDetailVenueViewController.h; sourceTree = "<group>"; };
+		76E389B61909B48700475B1E /* CTDetailVenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDetailVenueViewController.m; sourceTree = "<group>"; };
 		76EAA12B18F35174009CE526 /* CTLoginNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLoginNavigationController.h; sourceTree = "<group>"; };
 		76EAA12C18F35174009CE526 /* CTLoginNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLoginNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,6 +308,8 @@
 				768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */,
 				76E389AB1909646300475B1E /* CTMapViewController.h */,
 				76E389AC1909646300475B1E /* CTMapViewController.m */,
+				76E389B51909B48700475B1E /* CTDetailVenueViewController.h */,
+				76E389B61909B48700475B1E /* CTDetailVenueViewController.m */,
 				76E389B219099DEF00475B1E /* CTMapViewAnnotation.h */,
 				76E389B319099DEF00475B1E /* CTMapViewAnnotation.m */,
 			);
@@ -478,6 +483,7 @@
 				764627DC18FD72E700816AC3 /* CTFirstViewController.m in Sources */,
 				768E10D418AD2FEB00BC55B9 /* CTContactHolderViewController.m in Sources */,
 				7610E3DC18F9D5190091F489 /* FPTouchView.m in Sources */,
+				76E389B71909B48700475B1E /* CTDetailVenueViewController.m in Sources */,
 				76BFEC1118ABE337000CFC86 /* BTSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
