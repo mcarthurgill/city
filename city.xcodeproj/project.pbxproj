@@ -44,6 +44,10 @@
 		76CA4A8718F4538F00BCBA93 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 76CA4A8618F4538F00BCBA93 /* City.m */; };
 		76D6AA0918AEA84200E8F52F /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 76D6AA0718AEA84200E8F52F /* unchecked.png */; };
 		76D6AA0A18AEA84200E8F52F /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 76D6AA0818AEA84200E8F52F /* checked.png */; };
+		76E389AD1909646300475B1E /* CTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E389AC1909646300475B1E /* CTMapViewController.m */; };
+		76E389AF190965BC00475B1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E389AE190965BC00475B1E /* MapKit.framework */; };
+		76E389B1190965C200475B1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E389B0190965C200475B1E /* CoreLocation.framework */; };
+		76E389B419099DEF00475B1E /* CTMapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E389B319099DEF00475B1E /* CTMapViewAnnotation.m */; };
 		76EAA12D18F35174009CE526 /* CTLoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EAA12C18F35174009CE526 /* CTLoginNavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +122,12 @@
 		76CA4A8618F4538F00BCBA93 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		76D6AA0718AEA84200E8F52F /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		76D6AA0818AEA84200E8F52F /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		76E389AB1909646300475B1E /* CTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMapViewController.h; sourceTree = "<group>"; };
+		76E389AC1909646300475B1E /* CTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMapViewController.m; sourceTree = "<group>"; };
+		76E389AE190965BC00475B1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		76E389B0190965C200475B1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		76E389B219099DEF00475B1E /* CTMapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMapViewAnnotation.h; sourceTree = "<group>"; };
+		76E389B319099DEF00475B1E /* CTMapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMapViewAnnotation.m; sourceTree = "<group>"; };
 		76EAA12B18F35174009CE526 /* CTLoginNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLoginNavigationController.h; sourceTree = "<group>"; };
 		76EAA12C18F35174009CE526 /* CTLoginNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLoginNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76E389B1190965C200475B1E /* CoreLocation.framework in Frameworks */,
+				76E389AF190965BC00475B1E /* MapKit.framework in Frameworks */,
 				767DAFB218FB3B9800565814 /* MessageUI.framework in Frameworks */,
 				764808A118B7B4F5009208F0 /* CoreData.framework in Frameworks */,
 				7614071E18AAE6F3009C8E3B /* CoreGraphics.framework in Frameworks */,
@@ -186,6 +198,8 @@
 		7614071A18AAE6F3009C8E3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76E389B0190965C200475B1E /* CoreLocation.framework */,
+				76E389AE190965BC00475B1E /* MapKit.framework */,
 				767DAFB118FB3B9800565814 /* MessageUI.framework */,
 				764808A018B7B4F5009208F0 /* CoreData.framework */,
 				7614071B18AAE6F3009C8E3B /* Foundation.framework */,
@@ -289,6 +303,10 @@
 				7639111818FD6326005B39F7 /* CTSecondViewController.m */,
 				768E10D218AD2FEB00BC55B9 /* CTContactHolderViewController.h */,
 				768E10D318AD2FEB00BC55B9 /* CTContactHolderViewController.m */,
+				76E389AB1909646300475B1E /* CTMapViewController.h */,
+				76E389AC1909646300475B1E /* CTMapViewController.m */,
+				76E389B219099DEF00475B1E /* CTMapViewAnnotation.h */,
+				76E389B319099DEF00475B1E /* CTMapViewAnnotation.m */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -438,7 +456,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7614072818AAE6F3009C8E3B /* main.m in Sources */,
+				76E389AD1909646300475B1E /* CTMapViewController.m in Sources */,
 				7614075518AAE953009C8E3B /* CTLoginViewController.m in Sources */,
+				76E389B419099DEF00475B1E /* CTMapViewAnnotation.m in Sources */,
 				76EAA12D18F35174009CE526 /* CTLoginNavigationController.m in Sources */,
 				764808A418B7B562009208F0 /* city.xcdatamodeld in Sources */,
 				7610E3DA18F9D5190091F489 /* FPPopoverController.m in Sources */,
