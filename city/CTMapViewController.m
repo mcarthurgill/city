@@ -18,7 +18,6 @@
 @synthesize mapView;
 @synthesize tableview;
 @synthesize searchBar;
-@synthesize searchButton;
 @synthesize nearbyResults;
 @synthesize searchResults;
 
@@ -230,13 +229,6 @@
     if (searchText.length == 0) {
         [self resetSearchResults];
     }
-    NSLog(@"**********%@", searchText);
-}
-
-- (IBAction)searchButtonAction:(id)sender {
-    NSLog(@"searching for %@", self.searchBar.text);
-    [self scrollViewDidScroll:[[UIScrollView alloc] init]];
-    [self queryGooglePlaces:self.searchBar.text];
 }
 
 - (void) resetSearchResults {
@@ -246,7 +238,10 @@
     [tableview reloadData];
 }
 
-
+- (void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
+    [searchBar resignFirstResponder];
+    [self queryGooglePlaces:self.searchBar.text];
+}
 
 # pragma mark - segue
 
@@ -264,7 +259,6 @@
             detailViewController.venue = [searchResults objectAtIndex:myIndexPath.row];
         } else {
             detailViewController.venue = [nearbyResults objectAtIndex:myIndexPath.row];
-            NSLog(@"GOT HERE");
         }
     }
 }
